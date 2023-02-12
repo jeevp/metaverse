@@ -1,107 +1,193 @@
-@import '@fontsource/fira-mono';
+/*
+  1. Use a more-intuitive box-sizing model.
+*/
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+/*
+	2. Remove default margin
+  */
+* {
+	margin: 0;
+}
+/*
+	3. Allow percentage-based heights in the application
+  */
+html,
+body {
+	height: 100%;
+}
+/*
+	Typographic tweaks!
+	4. Add accessible line-height
+	5. Improve text rendering
+  */
+body {
+	line-height: 1.5;
+	-webkit-font-smoothing: antialiased;
+}
+/*
+	6. Improve media defaults
+  */
+img,
+picture,
+video,
+canvas,
+svg {
+	display: block;
+	max-width: 100%;
+}
+/*
+	7. Remove built-in form typography styles
+  */
+input,
+button,
+textarea,
+select {
+	font: inherit;
+}
+/*
+	8. Avoid text overflows
+  */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	overflow-wrap: break-word;
+}
 
 :root {
-	--font-body: Arial, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
-		Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-	--font-mono: 'Fira Mono', monospace;
-	--color-bg-0: rgb(202, 216, 228);
-	--color-bg-1: hsl(209, 36%, 86%);
-	--color-bg-2: hsl(224, 44%, 95%);
-	--color-theme-1: #ff3e00;
-	--color-theme-2: #4075a6;
-	--color-text: rgba(0, 0, 0, 0.7);
-	--column-width: 42rem;
-	--column-margin-top: 4rem;
-	font-family: var(--font-body);
-	color: var(--color-text);
+	--ui-font: 'Iosevka Extended', 'supreme', 'barlow', 'iosevka', 'hk grotesk';
+	--sans-font: 'standard', 'supreme', 'barlow', 'iosevka', 'hk grotesk';
+	--serif-font: 'Source Serif 4', 'gambetta', 'pt serif', 'noto serif';
+	--accent-font: 'standard', 'gambetta', 'pt serif', 'noto serif';
+	--dark: #121212;
+	--light: #f6f6f6;
+	--gutter: 20px;
+}
+
+/*
+
+possible fonts:
+gothic a1
+libre franklin
+inter / inter display
+supreme
+satoshi
+barlow
+iosevka
+hk grotesk
+uncut sans
+standard
+linik sans
+
+
+newsreader
+*/
+
+html {
+	margin: 0;
+	padding: 0;
 }
 
 body {
-	min-height: 100vh;
 	margin: 0;
-	background-attachment: fixed;
-	background-color: var(--color-bg-1);
-	background-size: 100vw 100vh;
-	background-image: radial-gradient(
-			50% 50% at 50% 50%,
-			rgba(255, 255, 255, 0.75) 0%,
-			rgba(255, 255, 255, 0) 100%
-		),
-		linear-gradient(180deg, var(--color-bg-0) 0%, var(--color-bg-1) 15%, var(--color-bg-2) 50%);
+	padding: 0;
+	background-color: var(--light);
+	font-family: var(--sans-font);
+	font-size: 18px;
+	color: var(--dark);
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
-h1,
-h2,
-p {
-	font-weight: 400;
-}
-
-p {
-	line-height: 1.5;
-}
-
-a {
-	color: var(--color-theme-1);
-	text-decoration: none;
-}
-
-a:hover {
-	text-decoration: underline;
-}
-
-h1 {
-	font-size: 2rem;
-	text-align: center;
-}
-
-h2 {
-	font-size: 1rem;
-}
-
-pre {
-	font-size: 16px;
-	font-family: var(--font-mono);
-	background-color: rgba(255, 255, 255, 0.45);
-	border-radius: 3px;
-	box-shadow: 2px 2px 6px rgb(255 255 255 / 25%);
-	padding: 0.5em;
-	overflow-x: auto;
-	color: var(--color-text);
-}
-
-.text-column {
-	display: flex;
-	max-width: 48rem;
-	flex: 0.6;
-	flex-direction: column;
-	justify-content: center;
-	margin: 0 auto;
-}
-
-input,
-button {
-	font-size: inherit;
+input {
+	display: block;
 	font-family: inherit;
 }
 
-button:focus:not(:focus-visible) {
-	outline: none;
+button {
+	cursor: pointer;
 }
 
-@media (min-width: 720px) {
-	h1 {
-		font-size: 2.4rem;
-	}
+.distorted {
+	filter: url('#distort');
 }
 
-.visually-hidden {
-	border: 0;
-	clip: rect(0 0 0 0);
-	height: auto;
-	margin: 0;
-	overflow: hidden;
-	padding: 0;
-	position: absolute;
-	width: 1px;
-	white-space: nowrap;
+/* Grid column utility classes */
+.full-width {
+	grid-column: 1 / -1;
+}
+
+.start1 {
+	grid-column-start: 1;
+}
+.start2 {
+	grid-column-start: 2;
+}
+.start3 {
+	grid-column-start: 3;
+}
+.start4 {
+	grid-column-start: 4;
+}
+.start5 {
+	grid-column-start: 5;
+}
+.start6 {
+	grid-column-start: 6;
+}
+.start7 {
+	grid-column-start: 7;
+}
+.start8 {
+	grid-column-start: 8;
+}
+.start9 {
+	grid-column-start: 9;
+}
+.start10 {
+	grid-column-start: 10;
+}
+.start11 {
+	grid-column-start: 11;
+}
+
+.end2 {
+	grid-column-end: 2;
+}
+.end3 {
+	grid-column-end: 3;
+}
+.end4 {
+	grid-column-end: 4;
+}
+.end5 {
+	grid-column-end: 5;
+}
+.end6 {
+	grid-column-end: 6;
+}
+.end7 {
+	grid-column-end: 7;
+}
+.end8 {
+	grid-column-end: 8;
+}
+.end9 {
+	grid-column-end: 9;
+}
+.end10 {
+	grid-column-end: 10;
+}
+.end11 {
+	grid-column-end: 11;
+}
+.end12 {
+	grid-column-end: 12;
 }

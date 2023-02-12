@@ -1,59 +1,55 @@
 <script>
-	import Counter from './Counter.svelte';
-	import welcome from '$lib/images/svelte-welcome.webp';
-	import welcome_fallback from '$lib/images/svelte-welcome.png';
+	import copy from '../data/copy.json';
+	import BlockchainDemo from './BlockchainDemo.svelte';
+	import Paragraph from './Paragraph.svelte';
+	import Quote from './Quote.svelte';
+	import SampleScrolly from './SampleScrolly.svelte';
+	import Figure from './Figure.svelte';
+	import Timeline from './Timeline.svelte';
+	import SvgFilters from './SVGFilters.svelte';
+	import TrendsChart from './TrendsChart.svelte';
 </script>
 
-<svelte:head>
-	<title>Home</title>
-	<meta name="description" content="Svelte demo app" />
-</svelte:head>
+<SvgFilters />
 
-<section>
-	<h1>
-		<span class="welcome">
-			<picture>
-				<source srcset={welcome} type="image/webp" />
-				<img src={welcome_fallback} alt="Welcome" />
-			</picture>
-		</span>
+<h2 class="start2 end6">Hyperreality and techno-feudalism</h2>
+<h4 class="start2 end8">{copy.testHeadline}</h4>
 
-		to your new<br />SvelteKit app
-	</h1>
+<Quote data={copy.realityPrivilegeQuote} />
 
-	<h2>
-		try editing <strong>src/routes/+page.svelte</strong>
-	</h2>
+<div class="start2 end7">
+	<TrendsChart />
+</div>
 
-	<Counter />
-</section>
+<div class="start3 end9">
+	<Figure
+		source="https://parametric.press/issue-02/sinking-delta/static/images/88_fhd.jpg"
+		alt="Trulli"
+		caption="Fig.1 - Trulli, Puglia, Italy."
+	/>
+</div>
+
+<Timeline />
+
+<Paragraph words={copy.intro} />
+
+<SampleScrolly />
+<BlockchainDemo />
 
 <style>
-	section {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		flex: 0.6;
+	h2 {
+		font-size: 3em;
+		font-family: var(--accent-font);
+		font-weight: 400;
+		margin: 0;
+		margin-top: 1em;
+		line-height: 1.2;
+		/* font-feature-settings: 'ss02'; */
 	}
 
-	h1 {
-		width: 100%;
-	}
-
-	.welcome {
-		display: block;
-		position: relative;
-		width: 100%;
-		height: 0;
-		padding: 0 0 calc(100% * 495 / 2048) 0;
-	}
-
-	.welcome img {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		top: 0;
-		display: block;
+	h4 {
+		font-size: 1.3em;
+		font-weight: 400;
+		margin: 2em 0;
 	}
 </style>
