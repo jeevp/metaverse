@@ -1,16 +1,16 @@
 <script>
 	import Header from './Header.svelte';
 	import './styles.css';
+	import '@fontsource/newsreader';
 </script>
 
 <div class="page-container">
-	<Header />
+	<!-- <Header /> -->
 	<div class="grid-wrapper">
 		<slot />
 
-		<footer>
-			<p>visit to learn SvelteKit</p>
-		</footer>
+		<!-- <footer>
+		</footer> -->
 	</div>
 	<div class="grid-bg">
 		{#each { length: 12 } as _, i}
@@ -26,10 +26,10 @@
 	}
 
 	.grid-wrapper {
-		height: 500px;
 		display: grid;
 		grid-template-columns: repeat(12, minmax(0, 1fr));
 		grid-auto-rows: minmax(min-content, max-content);
+		padding-bottom: 300px;
 	}
 
 	.grid-bg {

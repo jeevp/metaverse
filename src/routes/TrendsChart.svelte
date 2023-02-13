@@ -11,16 +11,16 @@
 		datasets: [
 			{
 				label: '"metaverse"',
-				backgroundColor: 'brown',
-				borderColor: 'brown',
+				backgroundColor: 'black',
+				borderColor: 'black',
 				data: rawData.map((r) => r.Popularity)
-			},
-			{
-				label: '"web3"',
-				backgroundColor: 'green',
-				borderColor: 'green',
-				data: rawData.map((r) => r.Popularity - 6)
 			}
+			// {
+			// 	label: '"web3"',
+			// 	backgroundColor: 'green',
+			// 	borderColor: 'green',
+			// 	data: rawData.map((r) => r.Popularity - 6)
+			// }
 		]
 	};
 
@@ -66,18 +66,32 @@
 	};
 	onMount(async () => {
 		ctx = chartCanvas.getContext('2d');
-		Chart.defaults.font.family = 'Iosevka Extended';
+		Chart.defaults.font.family = 'League Mono Narrow';
 		Chart.defaults.font.size = 16;
 		let c = new Chart(ctx, config);
 	});
 </script>
 
-<div>
+<figure>
 	<canvas bind:this={chartCanvas} />
-</div>
+	<figcaption>
+		<strong>Google search trends for the term "metaverse" by relative popularity.</strong>
+		Interest in the metaverse skyrocketed after Meta's rebranding — the term "metaverse” was the runner-up
+		for Oxford Language's Word of the Year in 2022.
+	</figcaption>
+</figure>
 
 <style>
-	div {
+	figure {
 		background-color: var(--light);
+	}
+	figcaption {
+		font-family: 'league mono narrow';
+		/* text-align: center; */
+		font-size: 0.9rem;
+		margin: 1em;
+		margin-top: 2em;
+		font-weight: 500;
+		opacity: 0.8;
 	}
 </style>

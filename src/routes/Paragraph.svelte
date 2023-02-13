@@ -43,9 +43,10 @@
 	};
 
 	extractCitations(words);
+	export let classProp = 'start2 end7';
 </script>
 
-<p>
+<p class={classProp}>
 	{#each chunks as chunk, i}
 		{#if chunk.type == 'cite'}
 			<Cite source={chunk.source} />
@@ -57,10 +58,9 @@
 
 <style>
 	p {
-		grid-column: 2 / 7;
 		background-color: var(--light);
 		height: fit-content;
-		width: calc(100% - var(--gutter));
+		/* width: calc(100% - var(--gutter)); */
 		margin: 0.7em auto;
 		font-family: var(--serif-font);
 	}

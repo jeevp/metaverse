@@ -62,9 +62,9 @@ h6 {
 }
 
 :root {
-	--ui-font: 'Iosevka Extended', 'supreme', 'barlow', 'iosevka', 'hk grotesk';
+	--ui-font: 'League Mono', 'supreme', 'barlow', 'iosevka', 'hk grotesk';
 	--sans-font: 'standard', 'supreme', 'barlow', 'iosevka', 'hk grotesk';
-	--serif-font: 'Source Serif 4', 'gambetta', 'pt serif', 'noto serif';
+	--serif-font: 'Newsreader', 'Source Serif 4', 'gambetta', 'pt serif', 'noto serif';
 	--accent-font: 'standard', 'gambetta', 'pt serif', 'noto serif';
 	--dark: #121212;
 	--light: #f6f6f6;
@@ -100,7 +100,7 @@ body {
 	padding: 0;
 	background-color: var(--light);
 	font-family: var(--sans-font);
-	font-size: 18px;
+	font-size: 20px;
 	color: var(--dark);
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;

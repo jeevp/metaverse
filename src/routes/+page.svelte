@@ -8,48 +8,61 @@
 	import Timeline from './Timeline.svelte';
 	import SvgFilters from './SVGFilters.svelte';
 	import TrendsChart from './TrendsChart.svelte';
+	import Etymology from './Etymology.svelte';
+	import PartHeading from './PartHeading.svelte';
+	import SectionHeading from './SectionHeading.svelte';
 </script>
 
 <SvgFilters />
-
+<!-- 
 <h2 class="start2 end6">Hyperreality and techno-feudalism</h2>
 <h4 class="start2 end8">{copy.testHeadline}</h4>
 
-<Quote data={copy.realityPrivilegeQuote} />
+<Quote data={copy.realityPrivilegeQuote} /> -->
 
-<div class="start2 end7">
+<PartHeading number="1" title="Introduction" />
+<SectionHeading hook={copy.introHook} byline={copy.introByline} />
+
+<Paragraph words={copy.intro1} />
+
+<div class="start8 end12">
 	<TrendsChart />
 </div>
 
+<Etymology />
+<Paragraph words={copy.intro2} classProp="start6 end11" />
+
+<ul class="start6 end11">
+	{#each copy.keyCharacteristics as c, i}
+		<li><strong>{c.name}</strong> — {c.description}</li>
+	{/each}
+</ul>
+<Paragraph words={copy.intro3} classProp="start4 end10" />
+<Paragraph words={copy.intro4} classProp="start4 end10" />
+
+<!-- 
 <div class="start3 end9">
 	<Figure
 		source="https://parametric.press/issue-02/sinking-delta/static/images/88_fhd.jpg"
 		alt="Trulli"
 		caption="Fig.1 - Trulli, Puglia, Italy."
 	/>
-</div>
+</div> -->
 
-<Timeline />
+<!-- <Timeline /> -->
 
-<Paragraph words={copy.intro} />
+<!-- <SampleScrolly /> -->
 
-<SampleScrolly />
-<BlockchainDemo />
-
+<!-- <BlockchainDemo /> -->
 <style>
-	h2 {
-		font-size: 3em;
-		font-family: var(--accent-font);
-		font-weight: 400;
-		margin: 0;
-		margin-top: 1em;
-		line-height: 1.2;
-		/* font-feature-settings: 'ss02'; */
+	ul {
+		padding: 1em;
+		margin-bottom: 3em;
 	}
 
-	h4 {
-		font-size: 1.3em;
-		font-weight: 400;
-		margin: 2em 0;
+	ul li {
+		margin-bottom: 1em;
+		font-size: 1.1rem;
+		list-style: circle;
 	}
 </style>
