@@ -40,7 +40,7 @@
 <Paragraph words={copy.intro3} classProp="start4 end10" />
 <Paragraph words={copy.intro4} classProp="start4 end10" />
 
-<PartHeading number="1" title="Introduction" />
+<PartHeading number="2" title="History" />
 <SectionHeading hook={copy.historyHook} byline={copy.historyByline} />
 
 <Timeline data={copy.timelineData} />
