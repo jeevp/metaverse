@@ -32,8 +32,8 @@
 			toggleActions: 'restart none none none',
 			pin: true,
 			scrub: true,
-			animation: tl,
-			markers: true
+			animation: tl
+			// markers: true
 		});
 	});
 </script>
@@ -68,8 +68,10 @@
 		margin-bottom: 40px;
 		position: relative;
 		border-top: 1px solid black;
-		border-left: 1px solid black;
+		/* border-bottom: 1px solid black; */
+		border-left: 6px solid black;
 		padding: 50px;
+		background-color: var(--light);
 	}
 
 	h4 {

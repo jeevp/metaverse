@@ -2,6 +2,8 @@
 	import Header from './Header.svelte';
 	import './styles.css';
 	import '@fontsource/newsreader';
+	import '@fontsource/league-mono';
+	import '@fontsource/league-mono-narrow';
 </script>
 
 <div class="page-container">

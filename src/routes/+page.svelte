@@ -13,7 +13,7 @@
 	import SectionHeading from './SectionHeading.svelte';
 </script>
 
-<SvgFilters />
+<!-- <SvgFilters /> -->
 <!-- 
 <h2 class="start2 end6">Hyperreality and techno-feudalism</h2>
 <h4 class="start2 end8">{copy.testHeadline}</h4>
@@ -23,22 +23,27 @@
 <PartHeading number="1" title="Introduction" />
 <SectionHeading hook={copy.introHook} byline={copy.introByline} />
 
-<Paragraph words={copy.intro1} />
+<Paragraph words={copy.intro1} leadIn={2} dropcap />
 
 <div class="start8 end12">
 	<TrendsChart />
 </div>
 
 <Etymology />
-<Paragraph words={copy.intro2} classProp="start6 end11" />
+<Paragraph words={copy.intro2} classProp="start5 end11" />
 
-<ul class="start6 end11">
+<ul class="start5 end11">
 	{#each copy.keyCharacteristics as c, i}
 		<li><strong>{c.name}</strong> — {c.description}</li>
 	{/each}
 </ul>
 <Paragraph words={copy.intro3} classProp="start4 end10" />
 <Paragraph words={copy.intro4} classProp="start4 end10" />
+
+<PartHeading number="1" title="Introduction" />
+<SectionHeading hook={copy.historyHook} byline={copy.historyByline} />
+
+<Timeline data={copy.timelineData} />
 
 <!-- 
 <div class="start3 end9">
@@ -48,8 +53,6 @@
 		caption="Fig.1 - Trulli, Puglia, Italy."
 	/>
 </div> -->
-
-<!-- <Timeline /> -->
 
 <!-- <SampleScrolly /> -->
 
