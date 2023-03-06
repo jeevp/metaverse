@@ -7,7 +7,9 @@
 {#if source}
 	<figure>
 		<img src={source} {alt} />
-		<figcaption>{caption}</figcaption>
+		{#if caption}
+			<figcaption>{caption}</figcaption>
+		{/if}
 	</figure>
 {/if}
 

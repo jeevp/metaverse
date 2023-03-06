@@ -8,12 +8,8 @@
 
 <div class="page-container">
 	<!-- <Header /> -->
-	<div class="grid-wrapper">
-		<slot />
-
-		<!-- <footer>
-		</footer> -->
-	</div>
+	<slot />
+	<!-- <div class="grid-wrapper" /> -->
 	<div class="grid-bg">
 		{#each { length: 12 } as _, i}
 			<div class="grid-line" />
@@ -25,13 +21,6 @@
 	.page-container {
 		width: calc(100% - var(--gutter));
 		margin: 0 auto;
-	}
-
-	.grid-wrapper {
-		display: grid;
-		grid-template-columns: repeat(12, minmax(0, 1fr));
-		grid-auto-rows: minmax(min-content, max-content);
-		padding-bottom: 300px;
 	}
 
 	.grid-bg {
@@ -53,9 +42,6 @@
 		border-right: 2px dotted black;
 	}
 
-	.grid-wrapper > * {
-		/* border: 1px solid black; */
-	}
 	.grid-bg > .grid-line {
 		/* border-right: 0.5px dashed black;
 		border-left: 0.5px dashed black; */

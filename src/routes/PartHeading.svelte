@@ -13,7 +13,8 @@
 	h4 {
 		font-family: 'League Mono Narrow';
 		font-weight: 400;
-		background-color: var(--light);
+		background-color: var(--bg-color);
+		color: var(--text-color);
 		padding: 3em 0;
 	}
 </style>

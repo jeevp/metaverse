@@ -1,6 +1,5 @@
 <script>
 	import copy from '../data/copy.json';
-	import BlockchainDemo from './BlockchainDemo.svelte';
 	import Paragraph from './Paragraph.svelte';
 	import Quote from './Quote.svelte';
 	import SampleScrolly from './SampleScrolly.svelte';
@@ -11,6 +10,9 @@
 	import Etymology from './Etymology.svelte';
 	import PartHeading from './PartHeading.svelte';
 	import SectionHeading from './SectionHeading.svelte';
+	import TechSection from './TechSection.svelte';
+	import TypeShuffleEffect from './TypeShuffleEffect.svelte';
+	import IdentitySection from './IdentitySection.svelte';
 </script>
 
 <!-- <SvgFilters /> -->
@@ -20,30 +22,36 @@
 
 <Quote data={copy.realityPrivilegeQuote} /> -->
 
-<PartHeading number="1" title="Introduction" />
-<SectionHeading hook={copy.introHook} byline={copy.introByline} />
+<IdentitySection />
+<TechSection />
 
-<Paragraph words={copy.intro1} leadIn={2} dropcap />
+<div class="grid-wrapper">
+	<PartHeading number="1" title="Introduction" />
+	<SectionHeading hook={copy.introHook} byline={copy.introByline} />
+	<Paragraph words={copy.intro1} leadIn={2} dropcap />
 
-<div class="start8 end12">
-	<TrendsChart />
+	<div class="start8 end12">
+		<TrendsChart />
+	</div>
+
+	<Etymology />
+	<Paragraph words={copy.intro2} classProp="start5 end11" />
+
+	<ul class="start5 end11">
+		{#each copy.keyCharacteristics as c, i}
+			<li><strong>{c.name}</strong> — {c.description}</li>
+		{/each}
+	</ul>
+	<Paragraph words={copy.intro3} classProp="start4 end10" />
+	<Paragraph words={copy.intro4} classProp="start4 end10" />
 </div>
 
-<Etymology />
-<Paragraph words={copy.intro2} classProp="start5 end11" />
+<div class="grid-wrapper">
+	<PartHeading number="2" title="History" />
+	<SectionHeading hook={copy.historyHook} byline={copy.historyByline} />
 
-<ul class="start5 end11">
-	{#each copy.keyCharacteristics as c, i}
-		<li><strong>{c.name}</strong> — {c.description}</li>
-	{/each}
-</ul>
-<Paragraph words={copy.intro3} classProp="start4 end10" />
-<Paragraph words={copy.intro4} classProp="start4 end10" />
-
-<PartHeading number="2" title="History" />
-<SectionHeading hook={copy.historyHook} byline={copy.historyByline} />
-
-<Timeline data={copy.timelineData} />
+	<Timeline data={copy.timelineData} />
+</div>
 
 <!-- 
 <div class="start3 end9">
@@ -55,8 +63,6 @@
 </div> -->
 
 <!-- <SampleScrolly /> -->
-
-<!-- <BlockchainDemo /> -->
 <style>
 	ul {
 		padding: 1em;

@@ -74,18 +74,19 @@
 <p class={classProp} class:dropcap>
 	{#if leadIn > 0}
 		<strong>{leadInWords}</strong>
-		{restOfWords}
+		{@html restOfWords}
 	{:else}
-		{words}
+		{@html words}
 	{/if}
 </p>
 
 <style>
 	p {
-		background-color: var(--light);
+		background-color: var(--bg-color);
+		color: var(--text-color);
 		height: fit-content;
-		/* width: calc(100% - var(--gutter)); */
-		margin: 0.7em auto;
+		width: calc(100% - calc(var(--gutter) * 3));
+		margin: 0.7em 0;
 		font-family: var(--serif-font);
 	}
 

@@ -7,6 +7,7 @@
 	<h3 class="hook">
 		{hook}
 	</h3>
+
 	<h3 class="byline">
 		{byline}
 	</h3>
@@ -30,5 +31,6 @@
 	div {
 		margin: 1em 0;
 		margin-bottom: 4em;
+		color: var(--text-color);
 	}
 </style>
