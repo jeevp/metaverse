@@ -33,7 +33,6 @@
 		"chartjs-adapter-moment": "^1.0.1",
 		"gsap": "^3.11.4",
 		"moment": "^2.29.4",
-		"splitting": "^1.0.6",
 		"svelte-chartjs": "^3.1.2",
 		"vis-data": "^7.1.4",
 		"vis-timeline": "^7.7.0"

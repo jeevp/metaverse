@@ -11,7 +11,6 @@
 	import PartHeading from './PartHeading.svelte';
 	import SectionHeading from './SectionHeading.svelte';
 	import TechSection from './TechSection.svelte';
-	import TypeShuffleEffect from './TypeShuffleEffect.svelte';
 	import IdentitySection from './IdentitySection.svelte';
 </script>
 
