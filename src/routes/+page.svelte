@@ -12,6 +12,7 @@
 	import SectionHeading from './SectionHeading.svelte';
 	import TechSection from './TechSection.svelte';
 	import IdentitySection from './IdentitySection.svelte';
+	import RealitySection from './RealitySection.svelte';
 </script>
 
 <!-- <SvgFilters /> -->
@@ -21,6 +22,7 @@
 
 <Quote data={copy.realityPrivilegeQuote} /> -->
 
+<RealitySection />
 <IdentitySection />
 <TechSection />
 
