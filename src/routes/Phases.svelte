@@ -4,7 +4,7 @@
 	import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 	import copy from '../data/copy.json';
 
-	gsap.registerPlugin(ScrollTrigger);
+	// gsap.registerPlugin(ScrollTrigger);
 
 	onMount(() => {
 		let sections = gsap.utils.toArray('.panel');
