@@ -4,41 +4,28 @@
 	import copy from '../data/copy.json';
 	import Paragraph from './Paragraph.svelte';
 	import Cave from './Cave.svelte';
-	import Phases from './Phases.svelte';
+	import PlatCapDiagram from './PlatCapDiagram.svelte';
+	import SvgFilters from './SVGFilters.svelte';
 </script>
 
 <section class="grid-wrapper">
-	<PartHeading number="5" title="Reality" />
-	<SectionHeading hook={copy.realityHook} byline={copy.realityByline} />
-	<Paragraph words={copy.realityIntro} classProp="start3 end9" />
-	<Paragraph words={copy.allegory} classProp="start3 end9" />
-	<Paragraph words={copy.allegoryExplanation} classProp="start3 end9" />
-	<Paragraph words={copy.hyperreality} classProp="start3 end9" />
-
-	<Phases />
-
-	<!-- <div class="start3 end8 phases">
-		<ol>
-			{#each copy.imagePhases as phase}
-				<li>
-					<h4>{phase.name}</h4>
-					<span class="desc">{phase.description}</span>
-					<p class="example">{phase.example}</p>
-				</li>
-			{/each}
-		</ol>
-	</div> -->
-	<Paragraph words={copy.imagePhasesConclusion} classProp="start3 end9" />
-	<Paragraph words={copy.hyperrealityDangers} classProp="start3 end9" />
-	<!-- <Cave /> -->
+	<PartHeading number="6" title="Capitalism" />
+	<SectionHeading hook={copy.capitalismHook} byline={copy.capitalismByline} />
+	<Paragraph words={copy.platformCapIntro} classProp="start4 end10" />
+	<div class="start3 end11">
+		<PlatCapDiagram />
+	</div>
+	<Paragraph words={copy.platformCapMeta} classProp="start4 end10" />
+	<Paragraph words={copy.surveillanceCap} classProp="start4 end10" />
 </section>
 
 <style>
 	section {
-		--bg-color: #f7f4e9;
+		--bg-color: #ebf4f7;
 		--text-color: var(--dark);
 		background-color: var(--bg-color);
 		color: var(--text-color);
+		padding-bottom: 200px;
 	}
 
 	.phases {

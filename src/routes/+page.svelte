@@ -13,6 +13,18 @@
 	import TechSection from './TechSection.svelte';
 	import IdentitySection from './IdentitySection.svelte';
 	import RealitySection from './RealitySection.svelte';
+	import CapitalismSection from './CapitalismSection.svelte';
+	import Phases from './Phases.svelte';
+
+	import { onMount } from 'svelte';
+	import gsap from 'gsap';
+	import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+
+	gsap.registerPlugin(ScrollTrigger);
+
+	onMount(() => {
+		console.log(ScrollTrigger.getAll());
+	});
 </script>
 
 <!-- <SvgFilters /> -->
@@ -22,8 +34,10 @@
 
 <Quote data={copy.realityPrivilegeQuote} /> -->
 
+<CapitalismSection />
 <RealitySection />
 <IdentitySection />
+
 <TechSection />
 
 <div class="grid-wrapper">

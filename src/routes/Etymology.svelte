@@ -3,8 +3,6 @@
 	import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 	import { onMount } from 'svelte';
 
-	gsap.registerPlugin(ScrollTrigger);
-
 	onMount(() => {
 		// gsap.to('.container', {
 		// 	scrollTrigger: '.container', // start the animation when ".box" enters the viewport (once)

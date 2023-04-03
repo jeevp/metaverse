@@ -4,8 +4,6 @@
 	import { onMount } from 'svelte';
 	import copy from '../data/copy.json';
 
-	gsap.registerPlugin(ScrollTrigger);
-
 	onMount(() => {
 		const tl = gsap
 			.timeline()
