@@ -6,11 +6,36 @@
 	import Cave from './Cave.svelte';
 	import PlatCapDiagram from './PlatCapDiagram.svelte';
 	import SvgFilters from './SVGFilters.svelte';
+	import Quote from './Quote.svelte';
 </script>
 
 <section class="grid-wrapper">
 	<PartHeading number="6" title="Capitalism" />
 	<SectionHeading hook={copy.capitalismHook} byline={copy.capitalismByline} />
+
+	<Paragraph words={copy.capitalismIntro} classProp="start4 end10" />
+
+	<div class="start3 end10">
+		<Quote
+			author="Marc Andreessen"
+			tagline="Investor, entrepreneur, and Meta board member"
+			words={copy.andreessenQuote}
+			big={false}
+		/>
+	</div>
+
+	<Paragraph words={copy.realityPrivilege} classProp="start4 end10" />
+
+	<div class="start3 end10">
+		<Quote
+			author="John Carmack"
+			tagline="VR pioneer and former Meta consultant CTO"
+			words={copy.carmackQuote}
+			big={false}
+		/>
+	</div>
+	<Paragraph words={copy.carmackAnalysis} classProp="start4 end10" />
+
 	<Paragraph words={copy.platformCapIntro} classProp="start4 end10" />
 	<div class="start3 end11">
 		<PlatCapDiagram />

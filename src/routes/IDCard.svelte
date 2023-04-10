@@ -1,8 +1,11 @@
 <script>
-	import { gsap } from 'gsap';
-	import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+	import { gsap } from 'gsap/dist/gsap.js';
+	import { ScrollTrigger } from 'gsap/dist/ScrollTrigger.js';
+
 	import { onMount } from 'svelte';
 	import copy from '../data/copy.json';
+
+	gsap.registerPlugin(ScrollTrigger);
 
 	onMount(() => {
 		const tl = gsap
@@ -29,19 +32,19 @@
 			.fromTo('.second', { opacity: 0 }, { opacity: 1 }, '<');
 
 		ScrollTrigger.create({
-			trigger: '#container',
+			trigger: '#idcard-container',
 			start: '0',
 			end: '+=1500',
 			toggleActions: 'restart none none none',
 			pin: true,
 			scrub: true,
-			animation: tl
-			// markers: true
+			animation: tl,
+			markers: true
 		});
 	});
 </script>
 
-<div id="container" class="full-width">
+<div id="idcard-container" class="full-width">
 	<div id="description-1" class="desc">
 		<h5>"James"</h5>
 		{@html copy.idDescription1}
@@ -93,7 +96,7 @@
 </div>
 
 <style>
-	#container {
+	#idcard-container {
 		position: relative;
 		background-color: #e1e2eb;
 		height: 100vh;

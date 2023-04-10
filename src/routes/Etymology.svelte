@@ -1,6 +1,7 @@
 <script>
-	import { gsap } from 'gsap';
-	import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+	import { gsap } from 'gsap/dist/gsap.js';
+	import { ScrollTrigger } from 'gsap/dist/ScrollTrigger.js';
+
 	import { onMount } from 'svelte';
 
 	onMount(() => {
@@ -24,7 +25,7 @@
 		// .fromTo('.container', { borderColor: 'transparent' }, { borderColor: 'black' }, '<');
 
 		ScrollTrigger.create({
-			trigger: '.container',
+			trigger: '#etymology-container',
 			start: '-200',
 			end: '+=400',
 			toggleActions: 'restart none none none',
@@ -36,7 +37,7 @@
 	});
 </script>
 
-<div class="start3 end12 container">
+<div class="start3 end12" id="etymology-container">
 	<h4>Etymology</h4>
 	<div class="word-group" id="meta">
 		<h1 class="word">meta</h1>
@@ -57,7 +58,7 @@
 </div>
 
 <style>
-	.container {
+	#etymology-container {
 		display: flex;
 		align-items: flex-start;
 		justify-content: space-between;

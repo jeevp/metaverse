@@ -1,4 +1,4 @@
-import { gsap } from 'gsap';
+import { gsap } from 'gsap/dist/gsap.js';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger.js';
 import { MotionPathPlugin } from 'gsap/dist/MotionPathPlugin.js';
 

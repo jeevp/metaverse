@@ -1,31 +1,33 @@
 <script>
 	import Error from './Error.svelte';
-	export let data;
+	export let words, author, tagline, big;
 </script>
 
-{#if data && data.author && data.words && data.tagline}
-	<div class="quote">
+{#if words && author && tagline}
+	<div class="quote" class:big>
 		<blockquote>
-			{data.words}
+			{words}
 		</blockquote>
-		<span class="author">{data.author}</span>
-		<span class="tagline">{data.tagline}</span>
+		<span class="author">{author}</span>
+		<span class="tagline">{tagline}</span>
 	</div>
 {:else}
 	<Error />
 {/if}
 
 <style>
-	* {
-		line-height: 1.2;
-	}
-
 	.quote {
-		grid-column: 8 / -1;
-		margin: 1em 0;
+		padding: calc(var(--gutter) * 2) calc(var(--gutter) * 3);
+		background-color: rgba(0, 0, 0, 0.027);
+		font-size: 1rem;
+		margin: 1em;
 	}
 
 	blockquote {
+		font-size: 1.2rem;
+	}
+
+	blockquote.big {
 		font-size: 1.6em;
 	}
 

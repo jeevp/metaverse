@@ -1,10 +1,10 @@
 <script>
 	import { onMount } from 'svelte';
-	import gsap from 'gsap';
-	import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+	import { gsap } from 'gsap/dist/gsap.js';
+	import { ScrollTrigger } from 'gsap/dist/ScrollTrigger.js';
 	import copy from '../data/copy.json';
 
-	// gsap.registerPlugin(ScrollTrigger);
+	gsap.registerPlugin(ScrollTrigger);
 
 	onMount(() => {
 		let sections = gsap.utils.toArray('.panel');
@@ -13,7 +13,7 @@
 			xPercent: -100 * (sections.length - 0.7),
 			ease: 'none',
 			scrollTrigger: {
-				trigger: '.panel-container',
+				trigger: '#phases-container',
 				pin: true,
 				markers: true,
 				scrub: 1,
@@ -24,7 +24,7 @@
 	});
 </script>
 
-<div class="panel-container full-width grid-wrapper">
+<div class="full-width grid-wrapper" id="phases-container">
 	<div class="intro start3 end12">
 		<h3 class="start3 end12">Baudrillard's four phases of the image:</h3>
 		<!-- <p class="start3 end10 tag">
@@ -50,7 +50,7 @@
 </div>
 
 <style>
-	.panel-container {
+	#phases-container {
 		overscroll-behavior: none;
 		overflow: visible;
 		height: fit-content;
