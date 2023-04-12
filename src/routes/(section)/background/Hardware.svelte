@@ -1,9 +1,6 @@
 <script>
-	import copy from '../data/copy.json';
-	import Paragraph from './Paragraph.svelte';
-	import Quote from './Quote.svelte';
+	import { hardwareSteps } from '../../../data/copy.json';
 	import Scrolly from './Scrolly.svelte';
-	import Figure from './Figure.svelte';
 	import { fade, fly } from 'svelte/transition';
 	import { quintOut } from 'svelte/easing';
 	import { onMount } from 'svelte';
@@ -15,7 +12,7 @@
 	console.log(videos);
 
 	onMount(() => {
-		videos = copy.hardwareSteps;
+		videos = hardwareSteps;
 		console.log(videos);
 	});
 </script>

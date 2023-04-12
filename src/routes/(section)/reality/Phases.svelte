@@ -2,7 +2,7 @@
 	import { onMount } from 'svelte';
 	import { gsap } from 'gsap/dist/gsap.js';
 	import { ScrollTrigger } from 'gsap/dist/ScrollTrigger.js';
-	import copy from '../data/copy.json';
+	import { imagePhases } from '../../../data/copy.json';
 
 	gsap.registerPlugin(ScrollTrigger);
 
@@ -35,7 +35,7 @@
 		</p> -->
 	</div>
 	<div class="panels full-width">
-		{#each copy.imagePhases as phase, i}
+		{#each imagePhases as phase, i}
 			<div class="panel">
 				<span class="phase-num">Phase {i + 1}</span>
 				<img src={`./phases/phase${i + 1}.png`} />

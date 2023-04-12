@@ -3,7 +3,7 @@
 	import Chart from 'chart.js/auto';
 	import 'chartjs-adapter-moment';
 
-	import { rawData } from '../data/trendsData';
+	import { rawData } from '../../../data/trendsData';
 
 	const dates = rawData.map((r) => Date.parse(r.Date));
 	export const data = {

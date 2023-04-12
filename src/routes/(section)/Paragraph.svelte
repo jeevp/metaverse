@@ -1,6 +1,4 @@
 <script>
-	import Cite from './Cite.svelte';
-
 	export let words;
 	let chunks = [];
 

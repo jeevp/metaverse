@@ -1,7 +1,6 @@
 <script>
-	import copy from '../data/copy.json';
+	import { blockchainSteps } from '../../../data/copy.json';
 
-	const steps = copy.blockchainSteps;
 	let currentStep = 0;
 
 	const nextStep = () => {
@@ -71,9 +70,9 @@
 		<div class="demo-container">
 			<div class="text-pane">
 				<div class="step">
-					<h4>{steps[currentStep].title}</h4>
+					<h4>{blockchainSteps[currentStep].title}</h4>
 					<p>
-						{@html steps[currentStep].description}
+						{@html blockchainSteps[currentStep].description}
 					</p>
 					<!-- <button on:click={nextStep}>{currentStep == steps.length - 1 ? 'Reset' : 'Next'}</button> -->
 					{#if currentStep === 0}

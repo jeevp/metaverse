@@ -8,6 +8,7 @@
 
 <div class="page-container">
 	<!-- <Header /> -->
+
 	<slot />
 	<!-- <div class="grid-wrapper" /> -->
 	<div class="grid-bg">

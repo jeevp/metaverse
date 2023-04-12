@@ -1,12 +1,10 @@
 <script>
-	import PartHeading from './PartHeading.svelte';
-	import SectionHeading from './SectionHeading.svelte';
-	import copy from '../data/copy.json';
-	import Paragraph from './Paragraph.svelte';
-	import Cave from './Cave.svelte';
+	import PartHeading from '../PartHeading.svelte';
+	import SectionHeading from '../SectionHeading.svelte';
+	import copy from '../../../data/copy.json';
+	import Paragraph from '../Paragraph.svelte';
 	import PlatCapDiagram from './PlatCapDiagram.svelte';
-	import SvgFilters from './SVGFilters.svelte';
-	import Quote from './Quote.svelte';
+	import Quote from '../Quote.svelte';
 </script>
 
 <section class="grid-wrapper">
