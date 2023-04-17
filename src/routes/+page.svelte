@@ -3,15 +3,13 @@
 	import Header from './Header.svelte';
 	import copy from '../data/copy.json';
 	import { ArrowRight } from 'svelte-lucide';
+	import Splash from './Splash.svelte';
 </script>
 
 <div id="wrapper">
-	<div id="splash">
-		<iframe
-			style="width:100%; height:100%;"
-			src="https://through-the-interface.typepad.com/files/LeapMetaBalls.html"
-		/>
-	</div>
+	<!-- <div id="splash">
+		<Splash />
+	</div> -->
 	<div id="page-content">
 		<div id="toc-container">
 			<header>

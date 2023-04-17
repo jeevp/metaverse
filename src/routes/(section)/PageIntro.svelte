@@ -2,6 +2,7 @@
 
 <style>
 	.page-intro {
-		padding: 100px;
+		padding-top: 100px;
+		paddgin-bottom: 50px;
 	}
 </style>

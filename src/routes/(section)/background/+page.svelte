@@ -69,6 +69,10 @@
 		list-style: circle;
 	}
 
+	#history {
+		margin: 4em 0;
+	}
+
 	#tech {
 		background-color: var(--dark);
 		--bg-color: var(--dark);
