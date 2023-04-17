@@ -3,6 +3,7 @@
 
 	import PartHeading from '../PartHeading.svelte';
 	import Paragraph from '../Paragraph.svelte';
+	import PageIntro from '../PageIntro.svelte';
 	import Hardware from './Hardware.svelte';
 	import SectionHeading from '../SectionHeading.svelte';
 	import TrendsChart from './TrendsChart.svelte';
@@ -14,40 +15,37 @@
 
 <!-- <SvgFilters /> -->
 
-<section class="grid-wrapper" id="intro">
+<section class="grid-wrapper page" id="intro">
+	<PageIntro />
 	<PartHeading number="1" title="Introduction" />
 	<SectionHeading hook={copy.introHook} byline={copy.introByline} />
-	<Paragraph words={copy.intro1} leadIn={2} dropcap />
+	<div id="intro" class="full-width grid-wrapper">
+		<Paragraph words={copy.intro1} leadIn={2} dropcap />
 
-	<div class="start8 end12">
-		<TrendsChart />
+		<div class="start8 end12">
+			<TrendsChart />
+		</div>
+
+		<Etymology />
+		<Paragraph words={copy.intro2} classProp="start4 end10" heading="Defining the metaverse" />
+
+		<ul class="start4 end10">
+			{#each copy.keyCharacteristics as c, i}
+				<li><strong>{c.name}</strong> — {c.description}</li>
+			{/each}
+		</ul>
+		<Paragraph words={copy.intro3} classProp="start4 end10" />
+		<Paragraph words={copy.intro4} classProp="start4 end10" />
 	</div>
 
-	<Etymology />
-	<Paragraph words={copy.intro2} classProp="start5 end11" />
+	<div id="history" class="full-width grid-wrapper">
+		<Timeline data={copy.timelineData} />
+	</div>
 
-	<ul class="start5 end11">
-		{#each copy.keyCharacteristics as c, i}
-			<li><strong>{c.name}</strong> — {c.description}</li>
-		{/each}
-	</ul>
-	<Paragraph words={copy.intro3} classProp="start4 end10" />
-	<Paragraph words={copy.intro4} classProp="start4 end10" />
-</section>
-
-<section class="grid-wrapper" id="history">
-	<PartHeading number="2" title="History" />
-	<SectionHeading hook={copy.historyHook} byline={copy.historyByline} />
-
-	<Timeline data={copy.timelineData} />
-</section>
-
-<section class="grid-wrapper" id="tech">
-	<PartHeading number="3" title="Technology" />
-
-	<SectionHeading hook={copy.techHook} byline={copy.techByline} />
-	<Hardware />
-	<Software />
+	<div id="tech" class="full-width grid-wrapper">
+		<Hardware />
+		<Software />
+	</div>
 </section>
 
 <!-- 
@@ -63,7 +61,6 @@
 <style>
 	#intro ul {
 		padding: 1em;
-		margin-bottom: 3em;
 	}
 
 	#intro ul li {

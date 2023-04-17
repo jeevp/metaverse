@@ -37,8 +37,8 @@
 			toggleActions: 'restart none none none',
 			pin: true,
 			scrub: true,
-			animation: tl,
-			markers: true
+			animation: tl
+			// markers: true
 		});
 	});
 </script>

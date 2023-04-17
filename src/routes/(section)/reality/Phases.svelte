@@ -15,7 +15,7 @@
 			scrollTrigger: {
 				trigger: '#phases-container',
 				pin: true,
-				markers: true,
+				// markers: true,
 				scrub: 1,
 				// snap: 1 / (sections.length - 1),
 				end: '+=7000'

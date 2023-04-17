@@ -4,25 +4,22 @@
 
 	import { onMount } from 'svelte';
 
+	gsap.registerPlugin(ScrollTrigger);
+
 	onMount(() => {
-		// gsap.to('.container', {
-		// 	scrollTrigger: '.container', // start the animation when ".box" enters the viewport (once)
-		// 	x: 500
-		// });
 		const tl = gsap.timeline();
 
-		tl.to('#meta h1', {
+		tl.to('#meta .word', {
 			x: -100
 		})
 			.to(
-				'#verse h1',
+				'#verse .word',
 				{
 					x: 100
 				},
 				'<'
 			)
 			.fromTo('.definition', { opacity: 0 }, { opacity: 1 });
-		// .fromTo('.container', { borderColor: 'transparent' }, { borderColor: 'black' }, '<');
 
 		ScrollTrigger.create({
 			trigger: '#etymology-container',
@@ -37,7 +34,7 @@
 	});
 </script>
 
-<div class="start3 end12" id="etymology-container">
+<div class="start2 end11" id="etymology-container">
 	<h4>Etymology</h4>
 	<div class="word-group" id="meta">
 		<h1 class="word">meta</h1>
@@ -66,11 +63,13 @@
 		margin-top: 100px;
 		margin-bottom: 40px;
 		position: relative;
-		border-top: 1px solid black;
+		/* border-top: 1px solid black; */
 		/* border-bottom: 1px solid black; */
-		border-left: 6px solid black;
+		/* border-left: 6px solid black; */
 		padding: 50px;
-		background-color: var(--light);
+		background-color: #e4e7f5;
+		border-radius: 0.3rem;
+		font-size: 1.1rem;
 	}
 
 	h4 {

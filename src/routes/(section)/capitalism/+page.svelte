@@ -5,9 +5,11 @@
 	import Paragraph from '../Paragraph.svelte';
 	import PlatCapDiagram from './PlatCapDiagram.svelte';
 	import Quote from '../Quote.svelte';
+	import PageIntro from '../PageIntro.svelte';
 </script>
 
-<section class="grid-wrapper">
+<section class="grid-wrapper page">
+	<PageIntro />
 	<PartHeading number="6" title="Capitalism" />
 	<SectionHeading hook={copy.capitalismHook} byline={copy.capitalismByline} />
 
@@ -48,7 +50,6 @@
 		--text-color: var(--dark);
 		background-color: var(--bg-color);
 		color: var(--text-color);
-		padding-bottom: 200px;
 	}
 
 	.phases {

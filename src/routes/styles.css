@@ -93,7 +93,7 @@ h6 {
 :root {
 	--ui-font: 'League Mono', 'supreme', 'barlow', 'iosevka', 'hk grotesk';
 	--sans-font: 'Standard', 'supreme', 'barlow', 'iosevka', 'hk grotesk';
-	--serif-font: 'Newsreader', 'Source Serif 4', 'gambetta', 'pt serif', 'noto serif';
+	--serif-font: 'NewsreaderVariable', 'Source Serif 4', 'gambetta', 'pt serif', 'noto serif';
 	--accent-font: 'standard', 'gambetta', 'pt serif', 'noto serif';
 	--dark: #121212;
 	--light: #f6f6f6;
@@ -231,4 +231,8 @@ button {
 }
 .end13 {
 	grid-column-end: -1;
+}
+
+section.page {
+	padding-bottom: 200px;
 }

@@ -76,8 +76,8 @@
 	<canvas bind:this={chartCanvas} />
 	<figcaption>
 		<strong>Google search trends for the term "metaverse" by relative popularity.</strong>
-		Interest in the metaverse skyrocketed after Meta's rebranding — the term "metaverse” was the runner-up
-		for Oxford Language's Word of the Year in 2022.
+		Interest in the metaverse skyrocketed after Meta's rebranding. In fact, the term "metaverse” was
+		the runner-up for Oxford Language's Word of the Year in 2022.
 	</figcaption>
 </figure>
 
@@ -86,9 +86,9 @@
 		background-color: var(--light);
 	}
 	figcaption {
-		font-family: 'league mono narrow';
+		/* font-family: 'league mono narrow'; */
 		/* text-align: center; */
-		font-size: 0.9rem;
+		font-size: 0.95rem;
 		margin: 1em;
 		margin-top: 2em;
 		font-weight: 500;
