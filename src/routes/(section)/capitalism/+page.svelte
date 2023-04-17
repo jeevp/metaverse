@@ -1,15 +1,15 @@
 <script>
-	import PartHeading from './PartHeading.svelte';
-	import SectionHeading from './SectionHeading.svelte';
-	import copy from '../data/copy.json';
-	import Paragraph from './Paragraph.svelte';
-	import Cave from './Cave.svelte';
+	import PartHeading from '../PartHeading.svelte';
+	import SectionHeading from '../SectionHeading.svelte';
+	import copy from '../../../data/copy.json';
+	import Paragraph from '../Paragraph.svelte';
 	import PlatCapDiagram from './PlatCapDiagram.svelte';
-	import SvgFilters from './SVGFilters.svelte';
-	import Quote from './Quote.svelte';
+	import Quote from '../Quote.svelte';
+	import PageIntro from '../PageIntro.svelte';
 </script>
 
-<section class="grid-wrapper">
+<section class="grid-wrapper page">
+	<PageIntro />
 	<PartHeading number="6" title="Capitalism" />
 	<SectionHeading hook={copy.capitalismHook} byline={copy.capitalismByline} />
 
@@ -50,7 +50,6 @@
 		--text-color: var(--dark);
 		background-color: var(--bg-color);
 		color: var(--text-color);
-		padding-bottom: 200px;
 	}
 
 	.phases {

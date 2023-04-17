@@ -2,7 +2,6 @@
 	import { DataSet } from 'vis-data';
 	import { Timeline } from 'vis-timeline';
 	import { onMount } from 'svelte';
-	import Paragraph from './Paragraph.svelte';
 
 	export let data;
 	let root;

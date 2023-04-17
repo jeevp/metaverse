@@ -1,10 +1,9 @@
 <script>
 	import { gsap } from 'gsap/dist/gsap.js';
 	import { ScrollTrigger } from 'gsap/dist/ScrollTrigger.js';
+	import { idDescription1, idDescription2 } from '../../../data/copy.json';
 
 	import { onMount } from 'svelte';
-	import copy from '../data/copy.json';
-
 	gsap.registerPlugin(ScrollTrigger);
 
 	onMount(() => {
@@ -38,8 +37,8 @@
 			toggleActions: 'restart none none none',
 			pin: true,
 			scrub: true,
-			animation: tl,
-			markers: true
+			animation: tl
+			// markers: true
 		});
 	});
 </script>
@@ -47,11 +46,11 @@
 <div id="idcard-container" class="full-width">
 	<div id="description-1" class="desc">
 		<h5>"James"</h5>
-		{@html copy.idDescription1}
+		{@html idDescription1}
 	</div>
 	<div id="description-2" class="desc">
 		<h5>"h1t0m1_"</h5>
-		{@html copy.idDescription2}
+		{@html idDescription2}
 	</div>
 	<div id="card">
 		<h4>Identification Document</h4>

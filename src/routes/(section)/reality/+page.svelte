@@ -1,19 +1,29 @@
 <script>
-	import PartHeading from './PartHeading.svelte';
-	import SectionHeading from './SectionHeading.svelte';
-	import copy from '../data/copy.json';
-	import Paragraph from './Paragraph.svelte';
-	import Cave from './Cave.svelte';
+	import PartHeading from '../PartHeading.svelte';
+	import SectionHeading from '../SectionHeading.svelte';
+	import copy from '../../../data/copy.json';
+	import Paragraph from '../Paragraph.svelte';
+	import PageIntro from '../PageIntro.svelte';
+	// import Cave from './Cave.svelte';
 	import Phases from './Phases.svelte';
+	import SvgFilters from '../../SVGFilters.svelte';
 </script>
 
-<section class="grid-wrapper">
+<section class="grid-wrapper page">
+	<PageIntro />
+
+	<SvgFilters />
 	<PartHeading number="5" title="Reality" />
 	<SectionHeading hook={copy.realityHook} byline={copy.realityByline} />
+
 	<Paragraph words={copy.realityIntro} classProp="start3 end9" />
-	<Paragraph words={copy.allegory} classProp="start3 end9" />
+	<Paragraph words={copy.allegory} classProp="start3 end9" heading="Plato’s Allegory of the Cave" />
 	<Paragraph words={copy.allegoryExplanation} classProp="start3 end9" />
-	<Paragraph words={copy.hyperreality} classProp="start3 end9" />
+	<Paragraph
+		words={copy.hyperreality}
+		classProp="start3 end9"
+		heading="Baudrillard’s theory of hyperreality"
+	/>
 
 	<Phases />
 
@@ -48,10 +58,6 @@
 	ol {
 		background-color: var(--bg-color);
 		color: var(--text-color);
-	}
-
-	h4 {
-		font-size: 1.2rem;
 	}
 
 	li {

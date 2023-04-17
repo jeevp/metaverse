@@ -1,13 +1,16 @@
 <script>
-	import PartHeading from './PartHeading.svelte';
-	import SectionHeading from './SectionHeading.svelte';
-	import copy from '../data/copy.json';
-	import Paragraph from './Paragraph.svelte';
+	import PartHeading from '../PartHeading.svelte';
+	import SectionHeading from '../SectionHeading.svelte';
+	import copy from '../../../data/copy.json';
+	import Paragraph from '../Paragraph.svelte';
+	import Figure from '../Figure.svelte';
 	import IDCard from './IDCard.svelte';
-	import Figure from './Figure.svelte';
+	import PageIntro from '../PageIntro.svelte';
 </script>
 
-<section class="grid-wrapper">
+<section class="grid-wrapper page">
+	<PageIntro />
+
 	<PartHeading number="4" title="Identity" />
 
 	<SectionHeading hook={copy.identityHook} byline={copy.identityByline} />

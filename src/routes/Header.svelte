@@ -1,18 +1,18 @@
 <header>
-	<h1>the metaverse</h1>
-	<h3>an interdisciplinary visual essay by Jeev Prayaga</h3>
-	<div class="scroll-indicator">Scroll</div>
+	<h3>The Metaverse</h3>
+	<h4>An interdisciplinary visual essay by Jeev Prayaga</h4>
+	<!-- <div class="scroll-indicator">Scroll</div> -->
 </header>
 
 <style>
-	header {
+	/* header {
 		margin: 0;
 		height: 50vh;
 		padding: 10vh 3rem;
 		font-family: var(--accent-font);
 		background-color: var(--dark);
 		color: var(--light);
-	}
+	} */
 
 	h1 {
 		font-size: 4rem;

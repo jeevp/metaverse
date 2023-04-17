@@ -1,5 +1,5 @@
 <script>
-	import Error from './Error.svelte';
+	import Error from '../Error.svelte';
 	export let words, author, tagline, big;
 </script>
 

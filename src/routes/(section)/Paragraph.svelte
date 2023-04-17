@@ -1,7 +1,6 @@
 <script>
-	import Cite from './Cite.svelte';
-
 	export let words;
+	export let heading;
 	let chunks = [];
 
 	const extractCitations = (str) => {
@@ -71,6 +70,10 @@
 	{/each}
 </p> -->
 
+{#if heading}
+	<h4 class={classProp}>{heading}</h4>
+{/if}
+
 <p class={classProp} class:dropcap>
 	{#if leadIn > 0}
 		<strong>{leadInWords}</strong>
@@ -81,13 +84,17 @@
 </p>
 
 <style>
+	@import url('https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@30,400&display=swap');
+
 	p {
 		background-color: var(--bg-color);
 		color: var(--text-color);
 		height: fit-content;
 		width: calc(100% - calc(var(--gutter) * 3));
 		margin: 0.7em 0;
-		font-family: var(--serif-font);
+		font-family: 'Newsreader';
+		font-variation-settings: 'opsz' 30;
+		line-height: 1.4;
 	}
 
 	strong {
@@ -110,4 +117,10 @@
 		display: block;
 		font-family: 'league mono wide';
 	} */
+
+	h4 {
+		font-weight: 400;
+		font-size: 0.9em;
+		margin-top: 3em;
+	}
 </style>

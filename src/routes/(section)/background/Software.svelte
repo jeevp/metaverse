@@ -1,12 +1,12 @@
 <script>
-	import copy from '../data/copy.json';
+	import { softwareIntro } from '../../../data/copy.json';
 	import BlockchainDemo from './BlockchainDemo.svelte';
 </script>
 
 <div class="full-width" id="container">
 	<h3>Software</h3>
 	<p class="intro">
-		{copy.softwareIntro}
+		{softwareIntro}
 	</p>
 
 	<BlockchainDemo />
