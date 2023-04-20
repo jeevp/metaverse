@@ -1,8 +1,27 @@
-<div class="page-intro full-width"><slot /></div>
+<script>
+	export let bg;
+</script>
+
+<div class="page-intro full-width" style={`background-color: var(--${bg})`}>
+	<div class="content">
+		<slot />
+	</div>
+</div>
 
 <style>
 	.page-intro {
-		padding-top: 100px;
-		paddgin-bottom: 50px;
+		position: fixed;
+		height: 40vh;
+		width: calc(100% - var(--gutter));
+		left: calc(var(--gutter) / 2);
+		display: flex;
+		padding: 0;
+		z-index: -1;
+		top: 1em;
+	}
+	.page-intro .content {
+		margin: auto;
+		width: fit-content;
+		height: fit-content;
 	}
 </style>

@@ -3,15 +3,17 @@
 	import SectionHeading from '../SectionHeading.svelte';
 	import copy from '../../../data/copy.json';
 	import Paragraph from '../Paragraph.svelte';
-	import Blotter from '../Blotter.svelte';
 	import Figure from '../Figure.svelte';
 	import IDCard from './IDCard.svelte';
 	import PageIntro from '../PageIntro.svelte';
+	import BigTitle from '../BigTitle.svelte';
 </script>
 
+<PageIntro bg="bold-blue">
+	<BigTitle section="identity" />
+</PageIntro>
 <section class="grid-wrapper page">
-	<PageIntro />
-	<!-- <Blotter /> -->
+	<!-- <Blotter materialType="liquid" inputText="Reality" /> -->
 
 	<PartHeading number="4" title="Identity" />
 
@@ -46,9 +48,10 @@
 </section>
 
 <style>
-	/* section {
-		background-color: var(--dark);
-		--bg-color: var(--dark);
-		--text-color: var(--light);
-	} */
+	section {
+		--bg-color: var(--pale-blue);
+		background-color: var(--bg-color);
+		--text-color: var(--dark);
+		color: var(--text-color);
+	}
 </style>

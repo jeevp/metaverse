@@ -1,10 +1,6 @@
 <script>
-	import { gsap } from 'gsap';
-	import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 	import { onMount, onDestroy } from 'svelte';
 	import copy from '../data/copy.json';
-
-	gsap.registerPlugin(ScrollTrigger);
 
 	onMount(() => {
 		let images = gsap.utils.toArray('.phase');

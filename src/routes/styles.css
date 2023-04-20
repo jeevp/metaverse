@@ -100,6 +100,15 @@ h6 {
 	--gutter: 20px;
 	--bg-color: var(--light);
 	--text-color: var(--dark);
+	--bold-green: #2d8e1e;
+	--bold-blue: #212c96;
+	--bold-purple: #991b9b;
+	--light-green: #e0ebdb;
+	--light-blue: #dee0ef;
+	--light-purple: #e7d8e7;
+	--pale-green: #f0f5ee;
+	--pale-blue: #eff2fb;
+	--pale-purple: #f1eaf1;
 }
 
 /*
@@ -234,5 +243,10 @@ button {
 }
 
 section.page {
+	margin-top: 40vh;
 	padding-bottom: 200px;
+}
+
+.lil-gui {
+	display: none;
 }

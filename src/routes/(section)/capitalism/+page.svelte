@@ -6,10 +6,13 @@
 	import PlatCapDiagram from './PlatCapDiagram.svelte';
 	import Quote from '../Quote.svelte';
 	import PageIntro from '../PageIntro.svelte';
+	import BigTitle from '../BigTitle.svelte';
 </script>
 
+<PageIntro bg="bold-green">
+	<BigTitle section="capitalism" />
+</PageIntro>
 <section class="grid-wrapper page">
-	<PageIntro />
 	<PartHeading number="6" title="Capitalism" />
 	<SectionHeading hook={copy.capitalismHook} byline={copy.capitalismByline} />
 
@@ -46,9 +49,9 @@
 
 <style>
 	section {
-		--bg-color: #ebf4f7;
-		--text-color: var(--dark);
+		--bg-color: var(--pale-green);
 		background-color: var(--bg-color);
+		--text-color: var(--dark);
 		color: var(--text-color);
 	}
 

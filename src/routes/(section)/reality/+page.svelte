@@ -7,11 +7,13 @@
 	// import Cave from './Cave.svelte';
 	import Phases from './Phases.svelte';
 	import SvgFilters from '../../SVGFilters.svelte';
+	import BigTitle from '../BigTitle.svelte';
 </script>
 
+<PageIntro bg="bold-purple">
+	<BigTitle section="reality" />
+</PageIntro>
 <section class="grid-wrapper page">
-	<PageIntro />
-
 	<SvgFilters />
 	<PartHeading number="5" title="Reality" />
 	<SectionHeading hook={copy.realityHook} byline={copy.realityByline} />
@@ -45,7 +47,7 @@
 
 <style>
 	section {
-		--bg-color: #f7f4e9;
+		--bg-color: var(--pale-purple);
 		--text-color: var(--dark);
 		background-color: var(--bg-color);
 		color: var(--text-color);

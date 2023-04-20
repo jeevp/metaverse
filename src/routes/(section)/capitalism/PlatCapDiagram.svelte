@@ -187,7 +187,7 @@
 		animation: dash 20s linear infinite;
 		animation-fill-mode: forwards;
 		/* stroke-linecap: round; */
-		stroke: #b083e6;
+		stroke: var(--bold-green);
 		stroke-width: 8;
 	}
 

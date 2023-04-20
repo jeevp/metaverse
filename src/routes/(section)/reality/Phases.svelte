@@ -1,12 +1,12 @@
 <script>
 	import { onMount } from 'svelte';
 	import { gsap } from 'gsap/dist/gsap.js';
-	import { ScrollTrigger } from 'gsap/dist/ScrollTrigger.js';
+	// import { ScrollTrigger } from 'gsap/dist/ScrollTrigger.js';
 	import { imagePhases } from '../../../data/copy.json';
-
-	gsap.registerPlugin(ScrollTrigger);
+	// import { beforeNavigate } from '$app/navigation';
 
 	onMount(() => {
+		console.log('just navigated');
 		let sections = gsap.utils.toArray('.panel');
 
 		gsap.to(sections, {
@@ -22,6 +22,23 @@
 			}
 		});
 	});
+
+	// onMount(() => {
+	// 	let sections = gsap.utils.toArray('.panel');
+
+	// 	gsap.to(sections, {
+	// 		xPercent: -100 * (sections.length - 0.7),
+	// 		ease: 'none',
+	// 		scrollTrigger: {
+	// 			trigger: '#phases-container',
+	// 			pin: true,
+	// 			// markers: true,
+	// 			scrub: 1,
+	// 			// snap: 1 / (sections.length - 1),
+	// 			end: '+=7000'
+	// 		}
+	// 	});
+	// });
 </script>
 
 <div class="full-width grid-wrapper" id="phases-container">

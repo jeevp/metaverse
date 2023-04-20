@@ -18,7 +18,7 @@
 <style>
 	.quote {
 		padding: calc(var(--gutter) * 2) calc(var(--gutter) * 3);
-		background-color: rgba(0, 0, 0, 0.027);
+		background-color: rgba(0, 0, 0, 0.035);
 		font-size: 1rem;
 		margin: 1em;
 	}

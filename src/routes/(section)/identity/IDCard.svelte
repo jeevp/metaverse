@@ -1,14 +1,44 @@
 <script>
-	import { gsap } from 'gsap/dist/gsap.js';
-	import { ScrollTrigger } from 'gsap/dist/ScrollTrigger.js';
 	import { idDescription1, idDescription2 } from '../../../data/copy.json';
-
+	import { gsap } from 'gsap/dist/gsap.js';
 	import { onMount } from 'svelte';
-	gsap.registerPlugin(ScrollTrigger);
+	import { afterNavigate, beforeNavigate } from '$app/navigation';
+	import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+
+	// const reset = () => {
+	// 	const triggers = ScrollTrigger.getAll();
+	// 	// console.log('triggers');
+	// 	console.log(tl.scrollTrigger);
+	// 	tl.clear();
+	// 	console.log(tl.scrollTrigger);
+	// 	// console.log(
+	// 	// 	ScrollTrigger.getAll().map((st) => {
+	// 	// 		st.kill(true);
+	// 	// 		gsap.set('#element', { clearProps: true });
+	// 	// 	})
+	// 	// );
+	// };
+
+	// afterNavigate(() => {
+
+	// })
+
+	// $: if ($navigating) reset();
 
 	onMount(() => {
 		const tl = gsap
-			.timeline()
+			.timeline({
+				scrollTrigger: {
+					trigger: '#idcard-container',
+					start: '0',
+					end: '+=1500',
+					toggleActions: 'restart none none none',
+					pin: true,
+					scrub: true
+					// animation: tl
+					// markers: true
+				}
+			})
 			.fromTo('#card', { opacity: 0 }, { opacity: 1 })
 			.fromTo('#card > *', { opacity: 0 }, { opacity: 1 })
 			.fromTo('#card', { scale: 0.5 }, { scale: 1, x: 200 })
@@ -30,16 +60,16 @@
 			.fromTo('#description-2', { opacity: 0, y: -100 }, { opacity: 1, y: 0 })
 			.fromTo('.second', { opacity: 0 }, { opacity: 1 }, '<');
 
-		ScrollTrigger.create({
-			trigger: '#idcard-container',
-			start: '0',
-			end: '+=1500',
-			toggleActions: 'restart none none none',
-			pin: true,
-			scrub: true,
-			animation: tl
-			// markers: true
-		});
+		// ScrollTrigger.create({
+		// 	trigger: '#idcard-container',
+		// 	start: '0',
+		// 	end: '+=1500',
+		// 	toggleActions: 'restart none none none',
+		// 	pin: true,
+		// 	scrub: true,
+		// 	animation: tl
+		// 	// markers: true
+		// });
 	});
 </script>
 
@@ -97,7 +127,7 @@
 <style>
 	#idcard-container {
 		position: relative;
-		background-color: #e1e2eb;
+		background-color: var(--light-blue);
 		height: 100vh;
 		margin: 4em 0;
 		padding-top: 30vh;

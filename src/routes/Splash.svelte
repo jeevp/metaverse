@@ -36,6 +36,7 @@
 
 	import GUI from 'lil-gui';
 	import { onMount } from 'svelte';
+
 	onMount(() => {
 		function clamp(number, min, max) {
 			return Math.max(min, Math.min(number, max));
@@ -288,8 +289,8 @@
 
 <div
 	id="canvasContainer"
-	data-grid="400"
-	data-mouse="0.48"
+	data-grid="100"
+	data-mouse="0.30"
 	data-strength="0.06"
 	data-relaxation="0.96"
 >
@@ -308,5 +309,6 @@
 		visibility: hidden;
 		pointer-events: none;
 		position: absolute;
+		height: 100%;
 	}
 </style>

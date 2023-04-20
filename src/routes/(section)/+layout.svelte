@@ -3,7 +3,13 @@
 
 	import { fly } from 'svelte/transition';
 	import { cubicIn, cubicOut } from 'svelte/easing';
-	import { onMount } from 'svelte';
+
+	import { gsap } from 'gsap/dist/gsap.js';
+	import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+
+	import { fade } from 'svelte/transition';
+
+	import { onMount, onDestroy } from 'svelte';
 	const pages = ['background', 'identity', 'reality', 'capitalism', 'conclusion', 'references'];
 	import { Home, ArrowLeft, ArrowRight } from 'svelte-lucide';
 	import {
@@ -11,6 +17,10 @@
 		realityTransition,
 		capitalismTransition
 	} from '../../data/copy.json';
+
+	gsap.registerPlugin(ScrollTrigger);
+
+	let ready = false;
 
 	$: path = $page.url.pathname.slice(1);
 	$: pageIndex = pages.indexOf($page.url.pathname.slice(1));
@@ -24,8 +34,18 @@
 	// const transitionIn = { easing: cubicOut, y, duration, delay };
 	// const transitionOut = { easing: cubicIn, y: -y, duration };
 
+	export let data;
+
 	onMount(() => {
-		var lastScrollTop; // This Varibale will store the top position
+		ready = true;
+		// log all scrolltriggers
+		// console.log(ScrollTrigger.getAll());
+		// ScrollTrigger.killAll();
+		// tl.kill(true);
+		// ScrollTrigger.getById("trigger1").kill(true);
+		// gsap.set("#element", {clearProps: true});
+
+		var lastScrollTop; // This variable will store the top position
 
 		const navbar = document.getElementById('navbar'); // Get The NavBar
 
@@ -46,86 +66,95 @@
 			lastScrollTop = scrollTop; //New Position Stored
 		});
 	});
+
+	// beforeNavigate(() => {
+	// 	console.log('HELLO');
+	// 	const trigs = ScrollTrigger.killAll();
+	// 	console.log(trigs);
+	// });
 </script>
 
 <nav id="navbar">
-	<div id="home-btn">
-		<a href="/" role="button">
-			<Home size="18" />
-			&nbsp;Home
-		</a>
-	</div>
-	<span class="title">
-		<strong>The Metaverse</strong> &mdash; An Interdisciplinary Visual Essay
-	</span>
-	<div class="page-buttons">
-		<div>
-			{#if prevIndex >= 0}
-				<a href={`/${pages[prevIndex]}`} style="float: left;">
-					<ArrowLeft size="18" />
-					&nbsp;
-					<span>{pages[prevIndex]}</span>
-				</a>
-			{/if}
+	{#if ready}
+		<div id="home-btn">
+			<a href="/" role="button">
+				<Home size="18" />
+				&nbsp;Home
+			</a>
 		</div>
+		<span class="title">
+			<strong>The Metaverse</strong> &mdash; An Interdisciplinary Visual Essay
+		</span>
+		<div class="page-buttons">
+			<div>
+				{#if prevIndex >= 0}
+					<a href={`/${pages[prevIndex]}`} style="float: left;" data-sveltekit-reload>
+						<ArrowLeft size="18" />
+						&nbsp;
+						<span>{pages[prevIndex]}</span>
+					</a>
+				{/if}
+			</div>
 
-		<div>
-			<span>
-				<strong>
-					{path}
-				</strong>
-			</span>
+			<div>
+				<span>
+					<strong>
+						{path}
+					</strong>
+				</span>
+			</div>
+
+			<div>
+				{#if nextIndex >= 0}
+					<a href={`/${pages[nextIndex]}`} style="float: right;" data-sveltekit-reload>
+						<span>{pages[nextIndex]}</span>
+						&nbsp;
+						<ArrowRight size="18" />
+					</a>
+				{/if}
+			</div>
 		</div>
-
-		<div>
-			{#if nextIndex >= 0}
-				<a href={`/${pages[nextIndex]}`} style="float: right;">
-					<span>{pages[nextIndex]}</span>
-					&nbsp;
-					<ArrowRight size="18" />
-				</a>
-			{/if}
-		</div>
-	</div>
-
+	{/if}
 	<!-- 
 	{#each pages as p, i}
 		<a href={`/${p}`} class:active={pageIndex === i}>{p}</a>
 	{/each} -->
 </nav>
 
-<div class="page-container">
-	<slot />
-	<!-- <div class="grid-wrapper" /> -->
-	<div class="grid-bg">
-		{#each { length: 12 } as _, i}
-			<div class="grid-line" />
-		{/each}
-	</div>
-	<div class="next-section grid-wrapper">
-		<div class="start3 end11 transition">
-			{#if nextIndex >= 0}
-				<div>
-					<h5>Next section:</h5>
-					<h4>{pages[nextIndex]}</h4>
-				</div>
-				<p>
-					{#if nextIndex === 1}
-						{identityTransition}
-					{:else if nextIndex === 2}
-						{realityTransition}
-					{:else if nextIndex === 3}
-						{capitalismTransition}
-					{/if}
-				</p>
-				<a href={`/${pages[nextIndex]}`}>
-					Continue reading&nbsp;
-					<ArrowRight size="18" />
-				</a>
-			{/if}
+{#if ready}
+	<div class="page-container" in:fade={{ duration: 300, delay: 400 }}>
+		<slot />
+		<!-- <div class="grid-wrapper" /> -->
+		<div class="grid-bg">
+			{#each { length: 12 } as _, i}
+				<div class="grid-line" />
+			{/each}
+		</div>
+		<div class="next-section grid-wrapper">
+			<div class="start3 end11 transition">
+				{#if nextIndex >= 0}
+					<div>
+						<h5>Next section:</h5>
+						<h4>{pages[nextIndex]}</h4>
+					</div>
+					<p>
+						{#if nextIndex === 1}
+							{identityTransition}
+						{:else if nextIndex === 2}
+							{realityTransition}
+						{:else if nextIndex === 3}
+							{capitalismTransition}
+						{/if}
+					</p>
+					<a href={`/${pages[nextIndex]}`}>
+						Continue reading&nbsp;
+						<ArrowRight size="18" />
+					</a>
+				{/if}
+			</div>
 		</div>
 	</div>
-</div>
+{/if}
 
 <style>
 	.next-section {
