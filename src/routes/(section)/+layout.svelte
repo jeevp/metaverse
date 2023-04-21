@@ -10,7 +10,7 @@
 	import { fade } from 'svelte/transition';
 
 	import { onMount, onDestroy } from 'svelte';
-	const pages = ['background', 'identity', 'reality', 'capitalism', 'conclusion', 'references'];
+	const pages = ['background', 'identity', 'reality', 'capitalism', 'conclusion']; // TODO: add references page
 	import { Home, ArrowLeft, ArrowRight } from 'svelte-lucide';
 	import {
 		identityTransition,

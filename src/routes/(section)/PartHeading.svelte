@@ -4,7 +4,7 @@
 </script>
 
 <h4 class="start2 end6">
-	Part {number}:
+	Theme {number}:
 	<br />
 	<strong>{title}</strong>
 </h4>

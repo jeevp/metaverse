@@ -11,31 +11,41 @@
 	import copy from '../../../data/copy.json';
 	import Software from './Software.svelte';
 	import Timeline from './Timeline.svelte';
+	import { fade } from 'svelte/transition';
+	let showChart = false;
+	const toggleChart = () => {
+		showChart = true;
+	};
 </script>
 
 <!-- <SvgFilters /> -->
 
 <section class="grid-wrapper page" id="intro">
 	<PageIntro />
-	<PartHeading number="1" title="Introduction" />
 	<SectionHeading hook={copy.introHook} byline={copy.introByline} />
 	<div id="intro" class="full-width grid-wrapper">
 		<Paragraph words={copy.intro1} leadIn={2} dropcap />
 
-		<div class="start8 end12">
-			<TrendsChart />
-		</div>
+		<Etymology on:leave={toggleChart} />
 
-		<Etymology />
-		<Paragraph words={copy.intro2} classProp="start4 end10" heading="Defining the metaverse" />
+		{#if showChart}
+			<div
+				in:fade={{ duration: 300, delay: 200 }}
+				class="start8 end12"
+				style="height: 0; overflow: visible;"
+			>
+				<TrendsChart />
+			</div>
+		{/if}
+		<Paragraph words={copy.intro2} classProp="start2 end7" heading="Defining the metaverse" />
 
-		<ul class="start4 end10">
+		<ul class="start2 end7">
 			{#each copy.keyCharacteristics as c, i}
 				<li><strong>{c.name}</strong> — {c.description}</li>
 			{/each}
 		</ul>
-		<Paragraph words={copy.intro3} classProp="start4 end10" />
-		<Paragraph words={copy.intro4} classProp="start4 end10" />
+		<Paragraph words={copy.intro3} classProp="start2 end7" />
+		<Paragraph words={copy.intro4} classProp="start2 end7" />
 	</div>
 
 	<div id="history" class="full-width grid-wrapper">

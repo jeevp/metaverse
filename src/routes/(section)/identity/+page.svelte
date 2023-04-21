@@ -15,7 +15,7 @@
 <section class="grid-wrapper page">
 	<!-- <Blotter materialType="liquid" inputText="Reality" /> -->
 
-	<PartHeading number="4" title="Identity" />
+	<PartHeading number="1" title="Identity" />
 
 	<SectionHeading hook={copy.identityHook} byline={copy.identityByline} />
 	<Paragraph
@@ -30,7 +30,9 @@
 		<Figure
 			source="./dog.png"
 			alt="Cartoon in which a dog says 'On the Internet, nobody knows you're a dog'"
-			caption=""
+			caption="1993 cartoon published in <i>The New Yorker</i>"
+			height="350"
+			overflow
 		/>
 	</div>
 	<Paragraph
@@ -39,11 +41,21 @@
 		heading="Identity tourism in cyberspace"
 	/>
 	<Paragraph words={copy.identityTourism} classProp="start3 end8" />
+
 	<Paragraph
 		words={copy.identityIssues}
 		classProp="start3 end8"
 		heading="Real-world issues in virtual spaces"
 	/>
+	<div class="start9 end12">
+		<Figure
+			source="./avatars.png"
+			alt="Four pixelated avatars designed to represent people with distinct appearances"
+			caption={`Avatars from a collection 10000 "VeKings" NFTs`}
+			height="350"
+			overflow
+		/>
+	</div>
 	<Paragraph words={copy.harassment} classProp="start3 end8" />
 </section>
 

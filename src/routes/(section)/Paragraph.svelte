@@ -3,43 +3,43 @@
 	export let heading;
 	let chunks = [];
 
-	const extractCitations = (str) => {
-		let pattern = /<cite:(.*?)>/g;
-		let start = 0;
-		let end = str.length - 1;
+	// const extractCitations = (str) => {
+	// 	let pattern = /<cite:(.*?)>/g;
+	// 	let start = 0;
+	// 	let end = str.length - 1;
 
-		const arr = [...str.matchAll(pattern)];
+	// 	const arr = [...str.matchAll(pattern)];
 
-		if (arr.length == 0) {
-			chunks.push({
-				type: 'copy',
-				content: str
-			});
-		}
+	// 	if (arr.length == 0) {
+	// 		chunks.push({
+	// 			type: 'copy',
+	// 			content: str
+	// 		});
+	// 	}
 
-		arr.forEach((match, i) => {
-			chunks.push({
-				type: 'copy',
-				content: str.slice(start, match.index)
-			});
-			start = match.index;
-			end = start + match[0].length;
-			// push string in angle brackets:
-			let citation = str.slice(start + 1, end - 1);
-			chunks.push({
-				type: 'cite',
-				content: citation,
-				source: citation.split(':')[1]
-			});
-			start = end;
-			if (i == arr.length - 1) {
-				chunks.push({
-					type: 'copy',
-					content: str.slice(start, str.length)
-				});
-			}
-		});
-	};
+	// 	arr.forEach((match, i) => {
+	// 		chunks.push({
+	// 			type: 'copy',
+	// 			content: str.slice(start, match.index)
+	// 		});
+	// 		start = match.index;
+	// 		end = start + match[0].length;
+	// 		// push string in angle brackets:
+	// 		let citation = str.slice(start + 1, end - 1);
+	// 		chunks.push({
+	// 			type: 'cite',
+	// 			content: citation,
+	// 			source: citation.split(':')[1]
+	// 		});
+	// 		start = end;
+	// 		if (i == arr.length - 1) {
+	// 			chunks.push({
+	// 				type: 'copy',
+	// 				content: str.slice(start, str.length)
+	// 			});
+	// 		}
+	// 	});
+	// };
 
 	// extractCitations(words);
 	export let classProp = 'start2 end7';

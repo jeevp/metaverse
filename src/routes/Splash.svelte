@@ -150,7 +150,7 @@
 				this.camera.aspect = this.width / this.height;
 
 				// image cover
-				this.imageAspect = 1 / 1.5;
+				this.imageAspect = 1 / 1.74;
 				let a1;
 				let a2;
 				if (this.height / this.width > this.imageAspect) {
@@ -294,7 +294,7 @@
 	data-strength="0.06"
 	data-relaxation="0.96"
 >
-	<img src="/splash2.jpg" alt="" />
+	<img src="/splash.png" alt="Illustration of a face wearing a virtual reality headset" />
 </div>
 
 <style>

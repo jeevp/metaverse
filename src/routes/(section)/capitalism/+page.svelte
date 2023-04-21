@@ -7,16 +7,21 @@
 	import Quote from '../Quote.svelte';
 	import PageIntro from '../PageIntro.svelte';
 	import BigTitle from '../BigTitle.svelte';
+	import Figure from '../Figure.svelte';
 </script>
 
 <PageIntro bg="bold-green">
 	<BigTitle section="capitalism" />
 </PageIntro>
 <section class="grid-wrapper page">
-	<PartHeading number="6" title="Capitalism" />
+	<PartHeading number="3" title="Capitalism" />
 	<SectionHeading hook={copy.capitalismHook} byline={copy.capitalismByline} />
 
-	<Paragraph words={copy.capitalismIntro} classProp="start4 end10" />
+	<Paragraph
+		words={copy.capitalismIntro}
+		classProp="start4 end10"
+		heading={`The "reality privilege" argument`}
+	/>
 
 	<div class="start3 end10">
 		<Quote
@@ -39,12 +44,35 @@
 	</div>
 	<Paragraph words={copy.carmackAnalysis} classProp="start4 end10" />
 
-	<Paragraph words={copy.platformCapIntro} classProp="start4 end10" />
+	<Paragraph
+		words={copy.platformCapIntro}
+		classProp="start4 end10"
+		heading="The platform capitalism model"
+	/>
 	<div class="start3 end11">
 		<PlatCapDiagram />
 	</div>
 	<Paragraph words={copy.platformCapMeta} classProp="start4 end10" />
-	<Paragraph words={copy.surveillanceCap} classProp="start4 end10" />
+	<div class="start2 end7" style="padding: 1em 0">
+		<Figure
+			source="./eye-tracking2.png"
+			alt="Diagram showing augmented reality glasses from a Meta patent"
+			caption="Meta patent for wearable AR glasses with biometric sensors"
+		/>
+	</div>
+	<div class="start7 end12" style="padding: 1em 0">
+		<Figure
+			source="./eye-tracking.png"
+			alt="Diagram showing details of an eye-tracking camera from a Meta patent"
+			caption="Detail of eye-tracking camera technology from the patent"
+		/>
+	</div>
+
+	<Paragraph
+		words={copy.surveillanceCap}
+		classProp="start4 end10"
+		heading="Data extraction for surveillance capitalism"
+	/>
 </section>
 
 <style>

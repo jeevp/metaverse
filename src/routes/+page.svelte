@@ -31,10 +31,10 @@
 					</div>
 				</header>
 				<section id="intro">
-					<p class="description">
-						In my analysis, I identified three different themes as important. Three critiques of the
-						metaverse (three angles)
-					</p>
+					<!-- <p class="description">
+						To answer this question, I identified three broad themes to guide an analysis of the
+						metaverse's potential impacts.
+					</p> -->
 				</section>
 
 				<section>
@@ -42,7 +42,7 @@
 						<span class="name">Background&nbsp;<ArrowRight size="18" /></span>
 						<p class="theme-q">What is the metaverse?</p>
 						<p class="theme-desc">
-							To get some context, learn about the history, technology, and current state of the
+							Get some context with a definition, timeline, and technological overview of the
 							metaverse.
 						</p>
 					</a>
@@ -53,12 +53,12 @@
 					<div class="analysis-intro">
 						<h5 class="question">Would the metaverse fundamentally benefit human society?</h5>
 						<p class="description">
-							In my analysis, I identified three different themes as important. Three critiques of
-							the metaverse (three angles)
+							To answer this question, I identified three broad themes to frame the potential
+							impacts of the metaverse on different facets of human society.
 						</p>
 					</div>
 					<nav>
-						<a role="button" href="/identity">
+						<a role="button" href="/identity" id="identity-btn">
 							<span class="name">Identity&nbsp;<ArrowRight size="18" /></span>
 							<p class="theme-q">
 								{copy.identityHook}
@@ -67,16 +67,7 @@
 								{copy.identityByline}
 							</p>
 						</a>
-						<a role="button" href="/capitalism">
-							<span class="name">Capitalism&nbsp;<ArrowRight size="18" /></span>
-							<p class="theme-q">
-								{copy.capitalismHook}
-							</p>
-							<p class="theme-desc">
-								{copy.capitalismByline}
-							</p>
-						</a>
-						<a role="button" href="/reality">
+						<a role="button" href="/reality" id="reality-btn">
 							<span class="name">Reality&nbsp;<ArrowRight size="18" /></span>
 							<p class="theme-q">
 								{copy.realityHook}
@@ -85,16 +76,25 @@
 								{copy.realityByline}
 							</p>
 						</a>
+						<a role="button" href="/capitalism" id="capitalism-btn">
+							<span class="name">Capitalism&nbsp;<ArrowRight size="18" /></span>
+							<p class="theme-q">
+								{copy.capitalismHook}
+							</p>
+							<p class="theme-desc">
+								{copy.capitalismByline}
+							</p>
+						</a>
 						<a role="button" href="/conclusion">
 							<span class="name">Conclusion&nbsp;<ArrowRight size="18" /></span>
 						</a>
 					</nav>
 				</section>
-				<section>
+				<!-- <section>
 					<a role="button" href="/references">
 						<span class="name">References&nbsp;<ArrowRight size="18" /></span>
 					</a>
-				</section>
+				</section> -->
 			</div>
 		</div>
 	{/if}
@@ -114,11 +114,6 @@
 		color: white;
 		height: calc(100vh - 120px);
 		scroll-snap-align: start;
-	}
-
-	#splash iframe {
-		border: none;
-		background-color: #eae3ef;
 	}
 
 	#page-content {
@@ -183,7 +178,6 @@
 	}
 
 	nav a[role='button'] {
-		background-color: #afc7dd;
 		text-decoration: none;
 		color: inherit;
 		margin-bottom: 1em;
@@ -228,8 +222,21 @@
 	}
 
 	#analysis {
-		border: 1px solid black;
+		border: 1px dashed black;
 		padding: 1em;
 		margin: 2em 0;
+	}
+
+	#identity-btn {
+		background-color: var(--light-blue);
+		border: 1px solid var(--bold-blue);
+	}
+	#reality-btn {
+		background-color: var(--light-purple);
+		border: 1px solid var(--bold-purple);
+	}
+	#capitalism-btn {
+		background-color: var(--light-green);
+		border: 1px solid var(--bold-green);
 	}
 </style>
