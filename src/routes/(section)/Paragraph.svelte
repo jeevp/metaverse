@@ -122,5 +122,6 @@
 		font-weight: 400;
 		font-size: 0.9em;
 		margin-top: 3em;
+		color: var(--text-color);
 	}
 </style>

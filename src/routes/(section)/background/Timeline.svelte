@@ -32,6 +32,7 @@
 
 	const items = new DataSet(
 		data.map((item) => ({
+			id: item.name,
 			content: item.name,
 			...(item.description && { description: item.description }),
 			start: item.start,
@@ -86,12 +87,18 @@
 		groupTemplate: (item) => renderGroupLabel(item)
 	};
 
+	const firstToShow = 'Snow Crash coins the term “metaverse”';
+
 	onMount(() => {
 		let container = root.querySelector('#vis-timeline');
 		const timeline = new Timeline(container, items, groups, options);
+
+		timeline.setSelection(firstToShow);
+		const selected = getSelection();
 		timeline.on('select', function (event, properties) {
 			console.log(event.items);
 			currentItem = event.items[0];
+			console.log('selection = ', timeline.getSelection());
 		});
 	});
 </script>

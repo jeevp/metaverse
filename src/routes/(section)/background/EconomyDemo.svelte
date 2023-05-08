@@ -1,10 +1,10 @@
 <script>
-	import { blockchainSteps } from '../../../data/copy.json';
+	import { economyDemoSteps } from '../../../data/copy.json';
 
 	let currentStep = 0;
 
 	const nextStep = () => {
-		if (currentStep === 3) {
+		if (currentStep === economyDemoSteps.length - 1) {
 			currentStep = 0;
 			blocks = [];
 		} else {
@@ -70,9 +70,9 @@
 		<div class="demo-container">
 			<div class="text-pane">
 				<div class="step">
-					<h4>{blockchainSteps[currentStep].title}</h4>
+					<h4>{economyDemoSteps[currentStep].title}</h4>
 					<p>
-						{@html blockchainSteps[currentStep].description}
+						{@html economyDemoSteps[currentStep].description}
 					</p>
 					<!-- <button on:click={nextStep}>{currentStep == steps.length - 1 ? 'Reset' : 'Next'}</button> -->
 					{#if currentStep === 0}
@@ -160,6 +160,7 @@
 <style>
 	#container {
 		padding: 1em;
+		margin: 2em 0;
 		--bg-color: var(--light);
 		--text-color: var(--dark);
 		/* background-color: #2d3145; */

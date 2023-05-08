@@ -93,7 +93,7 @@
 		/* font-family: 'league mono narrow'; */
 		/* text-align: center; */
 		font-size: 0.95rem;
-		margin: 1em;
+		font-size: 0.9rem;
 		margin-top: 2em;
 	}
 </style>
