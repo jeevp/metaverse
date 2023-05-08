@@ -109,6 +109,7 @@
 		padding: 0.4em 0.6em;
 		color: var(--dark);
 		font-size: 1rem;
+		list-style: square;
 	}
 
 	.caption span {

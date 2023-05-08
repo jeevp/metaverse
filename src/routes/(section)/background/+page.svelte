@@ -26,29 +26,6 @@
 	<PageIntro />
 	<SectionHeading hook={copy.introHook} byline={copy.introByline} />
 
-	<div id="tech" class="full-width grid-wrapper">
-		<Paragraph words={copy.intro1} heading="Technology of the metaverse" />
-		<h4 class="start2 end12">Technologies for immersive virtual experiences</h4>
-		<p class="start2 end7">{copy.intro1}</p>
-		<div class="start7 end12" style="padding-left: 40px">
-			<Figure
-				source="./virtuality.svg"
-				alt="Diagram showing where virtual, augmented, and mixed reality fall on the spectrum from the physical world to the virtual one"
-			/>
-		</div>
-		<ImmersiveTech />
-
-		<h4 class="start2 end12">Technologies for payment and ownership</h4>
-		<p class="start2 end7">{copy.economyTechIntro}</p>
-		<div class="start7 end12" style="padding-left: 40px">
-			<Figure
-				source="./economy.svg"
-				alt="Diagram showing where virtual, augmented, and mixed reality fall on the spectrum from the physical world to the virtual one"
-			/>
-		</div>
-		<EconomyDemo />
-	</div>
-
 	<div id="intro" class="full-width grid-wrapper">
 		<Paragraph words={copy.intro1} leadIn={2} dropcap />
 
@@ -93,6 +70,29 @@
 	<div id="history" class="full-width grid-wrapper">
 		<Timeline data={copy.timelineData} />
 	</div>
+
+	<div id="tech" class="full-width grid-wrapper">
+		<Paragraph words={copy.intro1} heading="Technology of the metaverse" />
+		<h4 class="start2 end12">Technologies for immersive virtual experiences</h4>
+		<p class="start2 end7">{copy.intro1}</p>
+		<div class="start7 end12" style="padding-left: 40px">
+			<Figure
+				source="./virtuality.svg"
+				alt="Diagram showing where virtual, augmented, and mixed reality fall on the spectrum from the physical world to the virtual one"
+			/>
+		</div>
+		<ImmersiveTech />
+
+		<h4 class="start2 end12">Technologies for payment and ownership</h4>
+		<p class="start2 end7">{copy.economyTechIntro}</p>
+		<div class="start7 end12" style="padding-left: 40px">
+			<Figure
+				source="./economy.svg"
+				alt="Diagram showing where virtual, augmented, and mixed reality fall on the spectrum from the physical world to the virtual one"
+			/>
+		</div>
+		<EconomyDemo />
+	</div>
 </section>
 
 <style>
@@ -107,16 +107,17 @@
 	}
 
 	#history {
-		margin: 4em 0;
+		--bg-color: var(--dark);
+		background-color: var(--bg-color);
 	}
 
 	#tech {
 		/* background-color: var(--dark);
 		--bg-color: var(--dark);
 		--text-color: var(--light); */
-		--bg-color: var(--light-blue);
-		background-color: var(--light-blue);
-		border: 1px solid blue;
+		--bg-color: #fcf3cf;
+		background-color: var(--bg-color);
+		background: var(--bg-color);
 		padding-bottom: 100px;
 	}
 

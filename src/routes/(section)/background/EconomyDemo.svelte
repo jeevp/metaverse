@@ -1,5 +1,6 @@
 <script>
 	import { economyDemoSteps } from '../../../data/copy.json';
+	import { ArrowRight } from 'svelte-lucide';
 
 	let currentStep = 0;
 
@@ -33,7 +34,7 @@
 			valid: true
 		};
 		blocks = [...blocks, newBlock];
-		if (currentStep === 2) {
+		if (economyDemoSteps[currentStep].stepName === 'blockchain2') {
 			const hash = generateUID();
 			const newBlock = {
 				hash: hash,
@@ -61,12 +62,36 @@
 		}
 	};
 
+	const stepAction = () => {
+		switch (economyDemoSteps[currentStep].stepName) {
+			case 'intro1':
+				currentStep++;
+				break;
+			case 'intro2':
+				addBlock();
+				break;
+			case 'blockchain1':
+				addBlock();
+				break;
+			case 'blockchain2':
+				addBlock();
+				break;
+			case 'blockchain3':
+				blocks = [];
+				nextStep();
+				break;
+			default:
+				nextStep();
+				break;
+		}
+	};
+
 	let expanded = true;
 	const toggleExpanded = () => (expanded = !expanded);
 </script>
 
 <div id="container" class="start2 end12">
-	{#if expanded}
+	{#if currentStep !== 0}
 		<div class="demo-container">
 			<div class="text-pane">
 				<div class="step">
@@ -75,59 +100,61 @@
 						{@html economyDemoSteps[currentStep].description}
 					</p>
 					<!-- <button on:click={nextStep}>{currentStep == steps.length - 1 ? 'Reset' : 'Next'}</button> -->
-					{#if currentStep === 0}
-						<button on:click={addBlock}>Start by creating a genesis block</button>
-					{:else if currentStep === 1}
-						<button on:click={addBlock}>Next, add another block</button>
-					{:else if currentStep === 2}
-						<button on:click={addBlock}>Finally, add two more blocks</button>
-					{:else if currentStep === 3}
-						<button on:click={nextStep}>Clear blocks and reset demo</button>
-					{/if}
+
+					<button on:click={stepAction}>
+						{economyDemoSteps[currentStep].actionLabel} &nbsp;<ArrowRight size="18" />
+					</button>
 				</div>
 			</div>
 
 			<div class="interactive-pane">
-				<div id="chain">
-					{#each blocks as block, i}
-						<div class="block" class:invalid={!block.valid}>
-							<div class="block-name">
-								{#if i == 0}
-									G
-								{:else}
-									{i}
-								{/if}
-							</div>
-
-							<div class="data">
-								<label for="blockData"> Block data </label>
-								<input
-									name="blockData"
-									bind:value={block.data}
-									type="text"
-									on:input={() => onDataChange(i)}
-								/>
-							</div>
-							<div class="header">
-								<div class="hash-row">
-									Block hash <span class="hash" class:invalid={block.hash !== block.origHash}>
-										{block.hash}
-									</span>
+				{#if economyDemoSteps[currentStep].stepName.includes('blockchain')}
+					<div id="chain">
+						{#each blocks as block, i}
+							<div class="block" class:invalid={!block.valid}>
+								<div class="block-name">
+									{#if i == 0}
+										G
+									{:else}
+										{i}
+									{/if}
 								</div>
-								{#if i > 0}
+
+								<div class="data">
+									<label for="blockData"> Block data </label>
+									<input
+										name="blockData"
+										bind:value={block.data}
+										type="text"
+										on:input={() => onDataChange(i)}
+									/>
+								</div>
+								<div class="header">
 									<div class="hash-row">
-										Previous block hash <span
-											class="hash"
-											class:invalid={blocks[i - 1].hash !== blocks[i - 1].origHash}
-										>
-											{blocks[i - 1].hash}
+										Block hash <span class="hash" class:invalid={block.hash !== block.origHash}>
+											{block.hash}
 										</span>
 									</div>
-								{/if}
+									{#if i > 0}
+										<div class="hash-row">
+											Previous block hash <span
+												class="hash"
+												class:invalid={blocks[i - 1].hash !== blocks[i - 1].origHash}
+											>
+												{blocks[i - 1].hash}
+											</span>
+										</div>
+									{/if}
+								</div>
 							</div>
-						</div>
-					{/each}
-				</div>
+						{/each}
+					</div>
+				{:else}
+					<img
+						src={`/${economyDemoSteps[currentStep].stepName}.svg`}
+						alt={economyDemoSteps[currentStep].title}
+					/>
+				{/if}
 			</div>
 		</div>
 
@@ -154,6 +181,23 @@
 			</li>
 		</ol>
 	</div> -->
+	{:else}
+		<div class="demo-container">
+			<div class="text-pane" style="min-height: auto;">
+				<div class="step">
+					<h4>{economyDemoSteps[currentStep].title}</h4>
+					<p>
+						{@html economyDemoSteps[currentStep].description}
+					</p>
+					<!-- <button on:click={nextStep}>{currentStep == steps.length - 1 ? 'Reset' : 'Next'}</button> -->
+				</div>
+			</div>
+			<div class="interactive-pane">
+				<button on:click={stepAction}>
+					{economyDemoSteps[currentStep].actionLabel} &nbsp;<ArrowRight size="18" />
+				</button>
+			</div>
+		</div>
 	{/if}
 </div>
 
@@ -164,7 +208,7 @@
 		--bg-color: var(--light);
 		--text-color: var(--dark);
 		/* background-color: #2d3145; */
-		background-color: #e8ebea;
+		background-color: #f1e6b9;
 	}
 
 	.demo-container {
@@ -174,16 +218,17 @@
 	.text-pane {
 		flex: 1;
 		position: relative;
+		min-height: 400px;
 	}
 
 	.interactive-pane {
 		flex: 1;
-		background-color: #ffffffba;
+		background-color: #ffffff78;
 		padding: 1em;
 	}
 
 	.text-pane button {
-		background-color: #d8b4e8;
+		background-color: #e6c375;
 		border: none;
 		font-size: 0.8em;
 		font-weight: 600;
@@ -191,6 +236,40 @@
 		border-radius: 0.2em;
 		position: absolute;
 		bottom: 0;
+		display: flex;
+		align-items: center;
+		transition: 0.2s all;
+	}
+
+	button:hover {
+		background-color: #e5b03b;
+	}
+
+	.interactive-pane button {
+		background-color: #e6c375;
+		border: none;
+		font-size: 0.9em;
+		font-weight: 600;
+		padding: 0.4em 0.8em;
+		border-radius: 0.3em;
+		margin: auto;
+		margin-top: 100px;
+		display: flex;
+		align-items: center;
+		transition: 0.2s all;
+		animation: pulse 1.6s infinite ease-out;
+	}
+
+	@keyframes pulse {
+		from {
+			transform: scale(1);
+		}
+		50% {
+			transform: scale(1.06);
+		}
+		to {
+			transform: scale(1);
+		}
 	}
 
 	p {
