@@ -1,7 +1,7 @@
 import { exec } from 'child_process';
 import fs from 'fs';
 
-const sections = ['background', 'identity', 'reality', 'capitalism'];
+const sections = ['background', 'identity', 'reality', 'capitalism', 'conclusion'];
 
 sections.forEach((section) => {
 	exec(

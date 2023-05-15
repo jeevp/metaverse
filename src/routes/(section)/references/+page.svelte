@@ -3,6 +3,7 @@
 	import idRefs from '../../../data/identity.html?raw';
 	import realRefs from '../../../data/reality.html?raw';
 	import capRefs from '../../../data/capitalism.html?raw';
+	import concRefs from '../../../data/conclusion.html?raw';
 	import { Library, Scroll } from 'svelte-lucide';
 </script>
 
@@ -105,6 +106,10 @@
 			<h5>Capitalism</h5>
 			<div class="refs">
 				{@html capRefs}
+			</div>
+			<h5>Conclusion</h5>
+			<div class="refs">
+				{@html concRefs}
 			</div>
 		</div>
 	</div>
