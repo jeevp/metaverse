@@ -2,6 +2,8 @@
 	import { DataSet } from 'vis-data';
 	import { Timeline } from 'vis-timeline';
 	import { onMount } from 'svelte';
+	import { blur } from 'svelte/transition';
+	import { ArrowRight, ArrowLeft } from 'svelte-lucide';
 
 	export let data;
 	let root;
@@ -21,14 +23,14 @@
 		}
 	]);
 
-	const renderGroupLabel = (groupData) => {
-		const item = document.createElement('div');
-		item.classList = ['group-label'];
-		item.innerHTML = groupData.content;
-		item.style.color = groupData.color;
-		item.style.borderColor = groupData.color;
-		return item;
-	};
+	// const renderGroupLabel = (groupData) => {
+	// 	const item = document.createElement('div');
+	// 	item.classList = ['group-label'];
+	// 	item.innerHTML = groupData.content;
+	// 	item.style.color = groupData.color;
+	// 	item.style.borderColor = groupData.color;
+	// 	return item;
+	// };
 
 	const items = new DataSet(
 		data.map((item) => ({
@@ -66,40 +68,81 @@
 			item.appendChild(img);
 		}
 		item.appendChild(name);
-		console.log(item);
 		return item;
 	};
 
 	// Configuration for the Timeline
 	const options = {
-		height: '500px',
-		preferZoom: true,
-		stackSubgroups: true,
-		zoomMax: 1577000000000, // 50 years
-		zoomMin: 604800000, // 1 day
-		zoomFriction: 30,
+		height: '300px',
+		// preferZoom: true,
+		// stackSubgroups: true,
+		zoomable: false,
+		zoomMax: 315569260000, // 50 years
+		zoomMin: 315569260000, // 1 day
+		// zoomFriction: 30,
 		// zoomKey: 'shiftKey',
-		min: new Date('1960'),
+		min: new Date('1945'),
 		max: new Date('2040'),
-		start: new Date('1980'),
-		end: new Date('2030'),
-		template: (item) => renderItem(item),
-		groupTemplate: (item) => renderGroupLabel(item)
+		start: new Date('1945'),
+		end: new Date('1955'),
+		template: (item) => renderItem(item)
+		// groupTemplate: (item) => renderGroupLabel(item)
 	};
 
-	const firstToShow = 'Snow Crash coins the term “metaverse”';
+	let timeline, allItems;
+	let currIndex = 0;
+
+	const focusItem = () => {
+		const item = allItems[currIndex];
+		timeline.focus(item.id, { animation: true, zoom: false });
+		timeline.setSelection(item.id);
+		currentItem = item;
+	};
+
+	const nextItem = () => {
+		currIndex++;
+		focusItem();
+	};
+
+	const prevItem = () => {
+		currIndex--;
+		focusItem();
+	};
+
+	$: currentItem = allItems ? items.get(allItems[currIndex].id) : null;
 
 	onMount(() => {
 		let container = root.querySelector('#vis-timeline');
-		const timeline = new Timeline(container, items, groups, options);
+		timeline = new Timeline(container, items, options);
 
-		timeline.setSelection(firstToShow);
-		const selected = getSelection();
-		timeline.on('select', function (event, properties) {
-			console.log(event.items);
-			currentItem = event.items[0];
-			console.log('selection = ', timeline.getSelection());
+		allItems = items
+			.get({
+				fields: ['id', 'type', 'start']
+			})
+			.filter((item) => {
+				return item.type == 'point';
+			})
+			.sort((a, b) => {
+				return new Date(a.start).getTime() - new Date(b.start).getTime();
+			});
+
+		focusItem();
+
+		timeline.on('select', function (event) {
+			if (event.items.length > 0) {
+				currIndex = allItems.findIndex((el) => event.items[0] === el.id);
+			}
 		});
+		// timeline.on('rangechanged', function (event, properties) {
+		// 	const selected = timeline.getSelection();
+		// 	if (selected.length === 1) {
+		// 		const selectedIsVisible = timeline.getVisibleItems().includes(selected[0]);
+		// 		if (!selectedIsVisible) {
+		// 			timeline.setSelection([]);
+		// 			currentItem = null;
+		// 		}
+		// 	}
+		// });
 	});
 </script>
 
@@ -111,51 +154,76 @@
 	/>
 </svelte:head>
 
-<div bind:this={root} class="wrapper full-width">
-	<div class="timeline-container">
-		<div id="vis-timeline" />
-		{#if currentItem}
-			<div id="timeline-details">
-				<div class="details-container">
-					<span class="item-group">{@html groups.get(items.get(currentItem).group).content}</span>
-					<span class="item-date">{items.get(currentItem).start}</span>
-					<div class="item-description">
-						{#if items.get(currentItem).image}
-							<div class="item-image">
-								<img src={items.get(currentItem).image} alt={items.get(currentItem).content} />
-							</div>
-						{/if}
-						<div class="item-content">
-							<span class="item-name">{@html items.get(currentItem).content}</span>
-							<p>{@html items.get(currentItem).description}</p>
-						</div>
-					</div>
-				</div>
+<div id="timeline" class="full-width grid-wrapper">
+	<div id="timeline-details" class="start8 end13">
+		{#if allItems}
+			<div id="timeline-controls" class="start1 end8">
+				<button on:click={prevItem} disabled={currIndex === 0}
+					><ArrowLeft size="18" />&nbsp;Previous</button
+				>
+				<button on:click={nextItem} disabled={currIndex === allItems.length - 1}
+					>Next &nbsp;<ArrowRight size="18" /></button
+				>
 			</div>
 		{/if}
+		{#key currIndex}
+			<div
+				class="details-container"
+				in:blur={{ amount: 4, duration: 400, delay: 300 }}
+				out:blur={{ amount: 4, duration: 300 }}
+			>
+				{#if currentItem}
+					<div class="item-description">
+						<span class="item-date">{currentItem.start}</span>
+						<span class="item-name">{@html currentItem.content}</span>
+						<p>{@html currentItem.description}</p>
+					</div>
+					{#if currentItem.image}
+						<div class="item-image">
+							<img src={currentItem.image} alt={currentItem.content} />
+						</div>
+					{/if}
+				{/if}
+			</div>
+		{/key}
+	</div>
+
+	<div bind:this={root} class="wrapper start1 end8">
+		<div class="timeline-container" bind:this={root}>
+			<div id="vis-timeline" />
+		</div>
 	</div>
 </div>
 
 <style>
+	#timeline {
+		padding: 100px 0;
+		padding-top: 50px;
+		margin-top: 50px;
+		background-color: white;
+	}
+
 	.timeline-container {
 		/* margin: 100px 0; */
-		background-color: white;
 		z-index: 1;
-		margin-bottom: 300px;
-		height: calc(100vh - var(--gutter));
-		background-color: var(--light);
+		/* margin-bottom: 300px; */
+		/* height: calc(100vh - var(--gutter)); */
+	}
+
+	#timeline-controls button:disabled,
+	#timeline-controls button[disabled] {
+		cursor: text;
 	}
 
 	#vis-timeline {
-		/* margin: 100px 0; */
-		font-family: 'league mono narrow';
+		font-family: 'League Mono Narrow';
 		font-size: 0.9em;
 		font-weight: 300;
 		background-color: white;
+		padding-right: 1em;
 	}
 
-	.vis-timeline {
-		cursor: grab;
+	:global(.vis-timeline) {
 		margin: 0 auto;
 		border: 0;
 	}
@@ -204,7 +272,7 @@
 		cursor: pointer;
 		border-color: var(--dotColor);
 	}
-
+	/* 
 	:global(.dot-green) {
 		border-color: green !important;
 	}
@@ -213,7 +281,7 @@
 	}
 	:global(.dot-red) {
 		border-color: red !important;
-	}
+	} */
 	/* 
 	:global(.vis-dot) {
 		border-color: green;
@@ -230,7 +298,7 @@
 	:global(.group-label) {
 		font-size: 0.8em;
 		text-transform: uppercase;
-		font-family: 'League Mono';
+		font-family: 'League Mono Narrow';
 		font-weight: 600;
 		margin-left: 10px;
 		margin-right: 20px;
@@ -293,14 +361,14 @@
 		display: flex;
 		align-items: center;
 		padding: 0.5em;
-		font-size: 1.2em;
+		font-size: 1.1em;
 		font-weight: 600;
 		border-radius: 0.2em;
 	}
 
 	:global(.vis-item-content .featured img) {
-		max-width: 100px;
-		max-height: 100px;
+		max-width: 60px;
+		max-height: 60px;
 		margin: 0;
 		min-width: 36px;
 		margin-right: 10px;
@@ -324,51 +392,61 @@
 		border-radius: 0.2em;
 	}
 
-	#timeline-details .details-container {
-		width: 80%;
-		max-width: 800px;
-		margin: auto;
-		font-size: 1rem;
-		padding: 1em 2em;
+	#timeline-details {
+		z-index: 3;
+		padding: 0 1em;
+		height: 0;
+		padding-left: 1em;
 	}
 
-	.details-container .item-group {
-		text-transform: uppercase;
-		display: block;
-		font-family: 'League Mono';
-		float: right;
+	#timeline-details .details-container {
+		font-size: 1rem;
+		max-width: 650px;
+		background-color: white;
+		display: flex;
 	}
+
 	.details-container .item-date {
 		text-transform: uppercase;
 		display: block;
 		font-family: 'League Mono';
-		float: left;
 	}
 
 	.details-container .item-name {
-		font-size: 1.5em;
+		font-size: 1.2em;
 		font-weight: 600;
 		display: block;
-		margin-bottom: 0.7em;
+		margin-bottom: 0.5em;
 	}
 	.item-description {
 		height: fit-content;
-		display: flex;
-		padding-top: 2em;
-		clear: both;
-	}
-	.item-description .item-image {
-		min-width: 200px;
-		padding-right: 2em;
-		padding-bottom: 1em;
-	}
-	.item-description .item-content {
-		flex: 1.5;
 	}
 
-	.item-description .item-image img {
-		max-width: 300px;
+	.details-container .item-image {
+		margin-left: 2em;
+	}
+
+	.details-container .item-image img {
+		max-width: 200px;
 		max-height: 180px;
+		float: right;
 		/* margin: auto; */
+	}
+
+	#timeline-controls {
+		margin-bottom: 2em;
+		font-size: 1rem;
+		width: 100%;
+		display: flex;
+	}
+
+	#timeline-controls button {
+		display: flex;
+		align-items: center;
+		margin-right: 0.6em;
+		color: var(--dark);
+		border-radius: 0.3em;
+		padding: 0.1em 0.4em;
+		border: none;
 	}
 </style>

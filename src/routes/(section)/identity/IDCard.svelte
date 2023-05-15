@@ -160,7 +160,7 @@
 	}
 
 	.desc h5 {
-		font-family: var(--ui-font);
+		font-family: 'League Mono Narrow';
 		font-size: 1.1em;
 		margin-bottom: 1em;
 	}
@@ -189,10 +189,11 @@
 	}
 
 	h4 {
-		font-family: var(--ui-font);
+		font-family: 'League Mono Narrow';
 		text-transform: uppercase;
 		font-size: 0.9em;
 		margin-bottom: 1.5em;
+		letter-spacing: 0.05em;
 	}
 
 	#card h5 {

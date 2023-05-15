@@ -260,18 +260,6 @@
 		animation: pulse 1.6s infinite ease-out;
 	}
 
-	@keyframes pulse {
-		from {
-			transform: scale(1);
-		}
-		50% {
-			transform: scale(1.06);
-		}
-		to {
-			transform: scale(1);
-		}
-	}
-
 	p {
 		font-size: 1.1rem;
 		width: 80%;

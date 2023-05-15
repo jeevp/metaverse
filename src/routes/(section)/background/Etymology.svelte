@@ -67,8 +67,8 @@
 		align-items: flex-start;
 		justify-content: space-between;
 		/* background-color: white; */
-		margin-top: 100px;
-		margin-bottom: 100px;
+		margin-top: 200px;
+		margin-bottom: 80px;
 		position: relative;
 		/* border-top: 1px solid black; */
 		/* border-bottom: 1px solid black; */

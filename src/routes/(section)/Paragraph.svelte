@@ -3,45 +3,6 @@
 	export let heading;
 	let chunks = [];
 
-	// const extractCitations = (str) => {
-	// 	let pattern = /<cite:(.*?)>/g;
-	// 	let start = 0;
-	// 	let end = str.length - 1;
-
-	// 	const arr = [...str.matchAll(pattern)];
-
-	// 	if (arr.length == 0) {
-	// 		chunks.push({
-	// 			type: 'copy',
-	// 			content: str
-	// 		});
-	// 	}
-
-	// 	arr.forEach((match, i) => {
-	// 		chunks.push({
-	// 			type: 'copy',
-	// 			content: str.slice(start, match.index)
-	// 		});
-	// 		start = match.index;
-	// 		end = start + match[0].length;
-	// 		// push string in angle brackets:
-	// 		let citation = str.slice(start + 1, end - 1);
-	// 		chunks.push({
-	// 			type: 'cite',
-	// 			content: citation,
-	// 			source: citation.split(':')[1]
-	// 		});
-	// 		start = end;
-	// 		if (i == arr.length - 1) {
-	// 			chunks.push({
-	// 				type: 'copy',
-	// 				content: str.slice(start, str.length)
-	// 			});
-	// 		}
-	// 	});
-	// };
-
-	// extractCitations(words);
 	export let classProp = 'start2 end7';
 	export let leadIn = 0;
 	export let dropcap;
@@ -60,16 +21,6 @@
 	const restOfWords = words.slice(nthMatchIndex(words, leadIn));
 </script>
 
-<!-- <p class={classProp}>
-	{#each chunks as chunk, i}
-		{#if chunk.type == 'cite'}
-			<Cite source={chunk.source} />
-		{:else if chunk.type == 'copy'}
-			{@html chunk.content}
-		{/if}
-	{/each}
-</p> -->
-
 {#if heading}
 	<h4 class={classProp}>{heading}</h4>
 {/if}
@@ -84,15 +35,13 @@
 </p>
 
 <style>
-	@import url('https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@30,400&display=swap');
-
 	p {
 		background-color: var(--bg-color);
 		color: var(--text-color);
 		height: fit-content;
 		width: calc(100% - calc(var(--gutter) * 3));
 		margin: 0.7em 0;
-		font-family: 'Newsreader';
+		font-family: var(--serif-font);
 		font-variation-settings: 'opsz' 30;
 		line-height: 1.4;
 	}

@@ -1,7 +1,4 @@
 <script>
-	import SvgFilters from '../../SVGFilters.svelte';
-
-	import PartHeading from '../PartHeading.svelte';
 	import Paragraph from '../Paragraph.svelte';
 	import PageIntro from '../PageIntro.svelte';
 	import SectionHeading from '../SectionHeading.svelte';
@@ -22,13 +19,16 @@
 
 <!-- <SvgFilters /> -->
 
-<section class="grid-wrapper page">
-	<PageIntro />
+<PageIntro />
+<section class="grid-wrapper page" style="padding-bottom: 0; margin-top: 20vh">
 	<SectionHeading hook={copy.introHook} byline={copy.introByline} />
-
+	{#if true}
+		<div class="start7 end12" in:fade={{ duration: 300, delay: 1200 }} style="padding-left: 2em">
+			<Figure source="./headset.png" alt="Illustration of a person wearing a headset" overflow />
+		</div>
+	{/if}
 	<div id="intro" class="full-width grid-wrapper">
 		<Paragraph words={copy.intro1} leadIn={2} dropcap />
-
 		<Etymology on:leave={toggleChart} />
 
 		{#if showChart}
@@ -68,13 +68,19 @@
 	</div>
 
 	<div id="history" class="full-width grid-wrapper">
+		<Paragraph
+			words={copy.timelineIntro1}
+			classProp="start2 end7"
+			heading="Timeline of the metaverse"
+		/>
+		<Paragraph words={copy.timelineIntro2} classProp="start7 end12" />
 		<Timeline data={copy.timelineData} />
 	</div>
 
 	<div id="tech" class="full-width grid-wrapper">
-		<Paragraph words={copy.intro1} heading="Technology of the metaverse" />
+		<Paragraph words={copy.techIntro} heading="Technology of the metaverse" />
 		<h4 class="start2 end12">Technologies for immersive virtual experiences</h4>
-		<p class="start2 end7">{copy.intro1}</p>
+		<p class="start2 end7">{copy.immersiveTechIntro}</p>
 		<div class="start7 end12" style="padding-left: 40px">
 			<Figure
 				source="./virtuality.svg"
@@ -83,12 +89,12 @@
 		</div>
 		<ImmersiveTech />
 
-		<h4 class="start2 end12">Technologies for payment and ownership</h4>
+		<h4 class="start2 end12">Technologies for decentralized virtual economies</h4>
 		<p class="start2 end7">{copy.economyTechIntro}</p>
 		<div class="start7 end12" style="padding-left: 40px">
 			<Figure
 				source="./economy.svg"
-				alt="Diagram showing where virtual, augmented, and mixed reality fall on the spectrum from the physical world to the virtual one"
+				alt="Diagram showing how blockchain, NFTs, and cryptocurrency work together to support virtual economies"
 			/>
 		</div>
 		<EconomyDemo />
@@ -106,11 +112,6 @@
 		list-style: circle;
 	}
 
-	#history {
-		--bg-color: var(--dark);
-		background-color: var(--bg-color);
-	}
-
 	#tech {
 		/* background-color: var(--dark);
 		--bg-color: var(--dark);
@@ -121,7 +122,14 @@
 		padding-bottom: 100px;
 	}
 
-	#tech p {
+	#history {
+		padding-bottom: 100px;
+		background-color: white;
+		--bg-color: white;
+		margin-top: 100px;
+	}
+
+	p {
 		font-size: 1.07rem;
 		font-family: var(--sans-font);
 	}
