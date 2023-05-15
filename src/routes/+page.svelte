@@ -1,11 +1,12 @@
 <!-- <SvgFilters /> -->
 <script>
-	import Header from './Header.svelte';
 	import copy from '../data/copy.json';
 	import { ArrowRight } from 'svelte-lucide';
 	import Splash from './Splash.svelte';
 	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
+	import MediaQuery from './MediaQuery.svelte';
+
 	let ready = false;
 
 	onMount(() => {
@@ -13,92 +14,110 @@
 	});
 </script>
 
-<div id="wrapper">
-	<div id="splash">
-		<Splash />
-	</div>
-	{#if ready}
-		<div id="page-content" in:fade={{ duration: 300, delay: 600 }}>
-			<div id="toc-container">
-				<header>
-					<div class="title">
-						<h4>The Metaverse</h4>
-						<h4 style="font-weight: 400">An Interdisciplinary Visual Essay</h4>
-					</div>
-					<div class="details">
-						<span>Jeev Prayaga</span>
-						<!-- <span>Grinnell College</span> -->
-					</div>
-				</header>
-				<section id="intro">
-					<p class="description">
-						In my analysis, I identified three different themes as important. Three critiques of the
-						metaverse (three angles)
-					</p>
-				</section>
-
-				<section>
-					<a role="button" href="/background">
-						<span class="name">Background&nbsp;<ArrowRight size="18" /></span>
-						<p class="theme-q">What is the metaverse?</p>
-						<p class="theme-desc">
-							To get some context, learn about the history, technology, and current state of the
-							metaverse.
-						</p>
-					</a>
-				</section>
-
-				<section id="analysis">
-					<!-- <h5 class="label">Analysis:</h5> -->
-					<div class="analysis-intro">
-						<h5 class="question">Would the metaverse fundamentally benefit human society?</h5>
-						<p class="description">
-							In my analysis, I identified three different themes as important. Three critiques of
-							the metaverse (three angles)
-						</p>
-					</div>
-					<nav>
-						<a role="button" href="/identity">
-							<span class="name">Identity&nbsp;<ArrowRight size="18" /></span>
-							<p class="theme-q">
-								{copy.identityHook}
-							</p>
-							<p class="theme-desc">
-								{copy.identityByline}
-							</p>
-						</a>
-						<a role="button" href="/capitalism">
-							<span class="name">Capitalism&nbsp;<ArrowRight size="18" /></span>
-							<p class="theme-q">
-								{copy.capitalismHook}
-							</p>
-							<p class="theme-desc">
-								{copy.capitalismByline}
-							</p>
-						</a>
-						<a role="button" href="/reality">
-							<span class="name">Reality&nbsp;<ArrowRight size="18" /></span>
-							<p class="theme-q">
-								{copy.realityHook}
-							</p>
-							<p class="theme-desc">
-								{copy.realityByline}
-							</p>
-						</a>
-						<a role="button" href="/conclusion">
-							<span class="name">Conclusion&nbsp;<ArrowRight size="18" /></span>
-						</a>
-					</nav>
-				</section>
-				<section>
-					<a role="button" href="/references">
-						<span class="name">References&nbsp;<ArrowRight size="18" /></span>
-					</a>
-				</section>
+<MediaQuery query="(max-width: 1000px)" let:matches>
+	{#if matches}
+		<div class="too-small">
+			<nav>
+				<span class="title">
+					<strong>The Metaverse</strong> &mdash; An Interdisciplinary Visual Essay
+				</span>
+			</nav>
+			<div class="root tablet">
+				<span>
+					Due to its interactive elements, this website is best viewed at larger screen sizes. Try
+					using a laptop/desktop or read the PDF version instead (available soon).
+				</span>
 			</div>
 		</div>
+	{:else}
+		<div id="wrapper">
+			<div id="splash">
+				<Splash />
+			</div>
+			{#if ready}
+				<div id="page-content" in:fade={{ duration: 300, delay: 600 }}>
+					<div id="toc-container">
+						<header>
+							<div class="title">
+								<h4>The Metaverse</h4>
+								<h4 style="font-weight: 400">An Interdisciplinary Visual Essay</h4>
+							</div>
+							<div class="details">
+								<span>Jeev Prayaga</span>
+								<!-- <span>Grinnell College</span> -->
+							</div>
+						</header>
+						<section id="intro">
+							<!-- <p class="description">
+								To answer this question, I identified three broad themes to guide an analysis of the
+								metaverse's potential impacts.
+							</p> -->
+						</section>
+
+						<section>
+							<a role="button" href="/background">
+								<span class="name">Background&nbsp;<ArrowRight size="18" /></span>
+								<p class="theme-q">What is the metaverse?</p>
+								<p class="theme-desc">
+									Get some context with a definition, timeline, and technological overview of the
+									metaverse.
+								</p>
+							</a>
+						</section>
+
+						<section id="analysis">
+							<!-- <h5 class="label">Analysis:</h5> -->
+							<div class="analysis-intro">
+								<h5 class="question">Would the metaverse fundamentally benefit human society?</h5>
+								<p class="description">
+									To answer this question, I identified three broad themes to frame the potential
+									impacts of the metaverse on different facets of human society.
+								</p>
+							</div>
+							<nav>
+								<a role="button" href="/identity" id="identity-btn">
+									<span class="name">Identity&nbsp;<ArrowRight size="18" /></span>
+									<p class="theme-q">
+										{copy.identityHook}
+									</p>
+									<p class="theme-desc">
+										{copy.identityByline}
+									</p>
+								</a>
+								<a role="button" href="/reality" id="reality-btn">
+									<span class="name">Reality&nbsp;<ArrowRight size="18" /></span>
+									<p class="theme-q">
+										{copy.realityHook}
+									</p>
+									<p class="theme-desc">
+										{copy.realityByline}
+									</p>
+								</a>
+								<a role="button" href="/capitalism" id="capitalism-btn">
+									<span class="name">Capitalism&nbsp;<ArrowRight size="18" /></span>
+									<p class="theme-q">
+										{copy.capitalismHook}
+									</p>
+									<p class="theme-desc">
+										{copy.capitalismByline}
+									</p>
+								</a>
+								<a role="button" href="/conclusion">
+									<span class="name">Conclusion&nbsp;<ArrowRight size="18" /></span>
+								</a>
+							</nav>
+						</section>
+						<section>
+							<a role="button" href="/references">
+								<span class="name">References&nbsp;<ArrowRight size="18" /></span>
+							</a>
+						</section>
+					</div>
+				</div>
+			{/if}
+		</div>
 	{/if}
-</div>
+</MediaQuery>
 
 <style>
 	#wrapper {
@@ -114,11 +133,6 @@
 		color: white;
 		height: calc(100vh - 120px);
 		scroll-snap-align: start;
-	}
-
-	#splash iframe {
-		border: none;
-		background-color: #eae3ef;
 	}
 
 	#page-content {
@@ -183,7 +197,6 @@
 	}
 
 	nav a[role='button'] {
-		background-color: #afc7dd;
 		text-decoration: none;
 		color: inherit;
 		margin-bottom: 1em;
@@ -228,8 +241,31 @@
 	}
 
 	#analysis {
-		border: 1px solid black;
+		border: 1px dashed black;
 		padding: 1em;
 		margin: 2em 0;
+	}
+
+	#identity-btn {
+		background-color: var(--light-blue);
+		border: 1px solid var(--bold-blue);
+	}
+	#reality-btn {
+		background-color: var(--light-purple);
+		border: 1px solid var(--bold-purple);
+	}
+	#capitalism-btn {
+		background-color: var(--light-green);
+		border: 1px solid var(--bold-green);
+	}
+
+	.too-small nav {
+		margin-bottom: 2em;
+	}
+
+	.too-small {
+		width: 90%;
+		margin: auto;
+		max-width: 800px;
 	}
 </style>

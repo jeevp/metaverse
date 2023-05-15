@@ -13,8 +13,8 @@
 	 */
 	import { onMount } from 'svelte';
 	export let root = null;
-	export let top = 100;
-	export let bottom = 0;
+	export let top = 0;
+	export let bottom = 400;
 	export let increments = 100;
 	export let value = undefined;
 	// export let progress = undefined;

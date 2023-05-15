@@ -16,6 +16,7 @@
 <style>
 	h3 {
 		line-height: 120%;
+		font-variation-settings: 'opsz' 40;
 	}
 	.hook {
 		font-family: var(--sans-font);

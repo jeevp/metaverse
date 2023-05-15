@@ -1,15 +1,10 @@
 <script>
 	import { page } from '$app/stores';
-
-	import { fly } from 'svelte/transition';
-	import { cubicIn, cubicOut } from 'svelte/easing';
-
 	import { gsap } from 'gsap/dist/gsap.js';
 	import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
-
 	import { fade } from 'svelte/transition';
-
-	import { onMount, onDestroy } from 'svelte';
+	import { onMount } from 'svelte';
+	import MediaQuery from '../MediaQuery.svelte';
 	const pages = ['background', 'identity', 'reality', 'capitalism', 'conclusion', 'references'];
 	import { Home, ArrowLeft, ArrowRight } from 'svelte-lucide';
 	import {
@@ -27,134 +22,117 @@
 	$: nextIndex = pageIndex + 1 < pages.length ? pageIndex + 1 : -1;
 	$: prevIndex = pageIndex - 1 >= 0 ? pageIndex - 1 : -1;
 
-	// const duration = 300;
-	// const delay = duration + 100;
-	// const y = 10;
-
-	// const transitionIn = { easing: cubicOut, y, duration, delay };
-	// const transitionOut = { easing: cubicIn, y: -y, duration };
-
-	export let data;
-
 	onMount(() => {
 		ready = true;
-		// log all scrolltriggers
-		// console.log(ScrollTrigger.getAll());
-		// ScrollTrigger.killAll();
-		// tl.kill(true);
-		// ScrollTrigger.getById("trigger1").kill(true);
-		// gsap.set("#element", {clearProps: true});
-
-		var lastScrollTop; // This variable will store the top position
-
-		const navbar = document.getElementById('navbar'); // Get The NavBar
+		var lastScrollTop;
+		const navbar = document.getElementById('navbar');
 
 		window.addEventListener('scroll', function () {
-			//on every scroll this funtion will be called
-
 			var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-			//This line will get the location on scroll
-
 			if (scrollTop > lastScrollTop) {
-				//if it will be greater than the previous
 				navbar.style.top = '-80px';
-				//set the value to the negetive of height of navbar
 			} else {
 				navbar.style.top = '0';
 			}
-
-			lastScrollTop = scrollTop; //New Position Stored
+			lastScrollTop = scrollTop;
 		});
 	});
-
-	// beforeNavigate(() => {
-	// 	console.log('HELLO');
-	// 	const trigs = ScrollTrigger.killAll();
-	// 	console.log(trigs);
-	// });
 </script>
 
-<nav id="navbar">
-	{#if ready}
-		<div id="home-btn">
-			<a href="/" role="button">
-				<Home size="18" />
-				&nbsp;Home
-			</a>
-		</div>
-		<span class="title">
-			<strong>The Metaverse</strong> &mdash; An Interdisciplinary Visual Essay
-		</span>
-		<div class="page-buttons">
-			<div>
-				{#if prevIndex >= 0}
-					<a href={`/${pages[prevIndex]}`} style="float: left;" data-sveltekit-reload>
-						<ArrowLeft size="18" />
-						&nbsp;
-						<span>{pages[prevIndex]}</span>
-					</a>
-				{/if}
+<MediaQuery query="(min-width: 1001px)" let:matches>
+	{#if ready && matches}
+		<nav id="navbar">
+			<div id="home-btn">
+				<a href="/" role="button" data-sveltekit-reload>
+					<Home size="18" />
+					&nbsp;Home
+				</a>
 			</div>
+			<span class="title">
+				<strong>The Metaverse</strong> &mdash; An Interdisciplinary Visual Essay
+			</span>
+			<div class="page-buttons">
+				<div>
+					{#if prevIndex >= 0}
+						<a href={`/${pages[prevIndex]}`} style="float: left;" data-sveltekit-reload>
+							<ArrowLeft size="18" />
+							&nbsp;
+							<span>{pages[prevIndex]}</span>
+						</a>
+					{/if}
+				</div>
 
-			<div>
-				<span>
-					<strong>
-						{path}
-					</strong>
-				</span>
-			</div>
+				<div>
+					<span>
+						<strong>
+							{path}
+						</strong>
+					</span>
+				</div>
 
-			<div>
-				{#if nextIndex >= 0}
-					<a href={`/${pages[nextIndex]}`} style="float: right;" data-sveltekit-reload>
-						<span>{pages[nextIndex]}</span>
-						&nbsp;
-						<ArrowRight size="18" />
-					</a>
-				{/if}
+				<div>
+					{#if nextIndex >= 0}
+						<a href={`/${pages[nextIndex]}`} style="float: right;" data-sveltekit-reload>
+							<span>{pages[nextIndex]}</span>
+							&nbsp;
+							<ArrowRight size="18" />
+						</a>
+					{/if}
+				</div>
 			</div>
+		</nav>
+
+		<div class="page-container" in:fade={{ duration: 300, delay: 400 }}>
+			<slot />
+			<div class="grid-bg">
+				{#each { length: 12 } as _, i}
+					<div class="grid-line" />
+				{/each}
+			</div>
+			{#if nextIndex !== -1}
+				<div class="next-section grid-wrapper">
+					<div class="start3 end11 transition">
+						{#if nextIndex >= 0}
+							<div>
+								<h5>Next section:</h5>
+								<h4>{pages[nextIndex]}</h4>
+							</div>
+							<p>
+								{#if nextIndex === 1}
+									{identityTransition}
+								{:else if nextIndex === 2}
+									{realityTransition}
+								{:else if nextIndex === 3}
+									{capitalismTransition}
+								{/if}
+							</p>
+							<a href={`/${pages[nextIndex]}`} data-sveltekit-reload>
+								Continue reading&nbsp;
+								<ArrowRight size="18" />
+							</a>
+						{/if}
+					</div>
+				</div>
+			{/if}
 		</div>
 	{/if}
-	<!-- 
-	{#each pages as p, i}
-		<a href={`/${p}`} class:active={pageIndex === i}>{p}</a>
-	{/each} -->
-</nav>
+</MediaQuery>
 
-{#if ready}
-	<div class="page-container" in:fade={{ duration: 300, delay: 400 }}>
-		<slot />
-		<!-- <div class="grid-wrapper" /> -->
-		<div class="grid-bg">
-			{#each { length: 12 } as _, i}
-				<div class="grid-line" />
-			{/each}
+<MediaQuery query="(max-width: 1000px)" let:matches>
+	{#if matches}
+		<nav>
+			<span class="title too-small">
+				<strong>The Metaverse</strong> &mdash; An Interdisciplinary Visual Essay
+			</span>
+		</nav>
+		<div class="root tablet">
+			<span>
+				Due to its interactive elements, this website is best viewed at larger screen sizes. Try
+				using a laptop/desktop or read the PDF version instead (available soon).
+			</span>
 		</div>
-		<div class="next-section grid-wrapper">
-			<div class="start3 end11 transition">
-				{#if nextIndex >= 0}
-					<div>
-						<h5>Next section:</h5>
-						<h4>{pages[nextIndex]}</h4>
-					</div>
-					<p>
-						{#if nextIndex === 1}
-							{identityTransition}
-						{:else if nextIndex === 2}
-							{realityTransition}
-						{:else if nextIndex === 3}
-							{capitalismTransition}
-						{/if}
-					</p>
-					<a href={`/${pages[nextIndex]}`}>
-						Continue reading&nbsp;
-						<ArrowRight size="18" />
-					</a>
-				{/if}
-			</div>
-		</div>
-	</div>
-{/if}
+	{/if}
+</MediaQuery>
 
 <style>
 	.next-section {
@@ -164,7 +142,6 @@
 
 	.next-section .transition {
 		padding: 100px 0;
-		/* background-color: lightgreen; */
 		border-radius: 10px;
 		width: 100%;
 		display: flex;
@@ -269,6 +246,12 @@
 		margin: 0 auto;
 	}
 
+	.page-container,
+	.page-container > * {
+		max-width: var(--max-page-width);
+		margin: auto;
+	}
+
 	.grid-bg {
 		display: grid;
 		width: calc(100% - var(--gutter));
@@ -289,12 +272,30 @@
 	}
 
 	.grid-bg > .grid-line {
-		/* border-right: 0.5px dashed black;
-		border-left: 0.5px dashed black; */
 		background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMiIgaGVpZ2h0PSIxNDQ5IiB2aWV3Qm94PSIwIDAgMiAxNDQ5IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cGF0aCBkPSJNMC41IDBMMS41IDE0NDguNSIgc3Ryb2tlPSJibGFjayIgc3Ryb2tlLWRhc2hhcnJheT0iMSA3Ii8+Cjwvc3ZnPgo=');
 		background-repeat: repeat-y;
 	}
 	.grid-bg > .grid-line:first-child {
 		margin-left: 0;
+	}
+
+	/* MEDIA QUERY STUFF */
+	.root {
+		position: fixed;
+		left: 0;
+		top: 15vh;
+		right: 0;
+		padding: 1em;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.root span {
+		max-width: 800px;
+	}
+
+	.too-small {
+		padding: 1em 0;
 	}
 </style>

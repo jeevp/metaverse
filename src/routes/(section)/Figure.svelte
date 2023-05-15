@@ -2,26 +2,32 @@
 	export let source;
 	export let alt;
 	export let caption;
+	export let height;
+	export let overflow = false;
 </script>
 
 {#if source}
-	<figure>
-		<img src={source} {alt} />
+	<figure class:overflow>
+		<img src={source} {alt} style={`max-height: ${height}px`} />
 		{#if caption}
-			<figcaption>{caption}</figcaption>
+			<figcaption>{@html caption}</figcaption>
 		{/if}
 	</figure>
 {/if}
 
 <style>
 	figure {
-		margin-top: 1em;
-		margin-bottom: 2em;
+		padding: 1em;
 	}
+
 	figcaption {
-		font-family: var(--ui-font);
-		font-size: 0.8em;
-		font-weight: 800;
-		margin-top: 0.25em;
+		font-family: var(--sans-font);
+		font-size: 0.9rem;
+		margin-top: 0.7em;
+	}
+
+	figure.overflow {
+		max-height: 0;
+		overflow: visible;
 	}
 </style>

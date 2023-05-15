@@ -1,10 +1,16 @@
 <script>
 	import { gsap } from 'gsap/dist/gsap.js';
 	import { ScrollTrigger } from 'gsap/dist/ScrollTrigger.js';
+	import { createEventDispatcher } from 'svelte';
+	const dispatch = createEventDispatcher();
 
 	import { onMount } from 'svelte';
 
 	// gsap.registerPlugin(ScrollTrigger);
+
+	const leaveFunc = () => {
+		dispatch('leave');
+	};
 
 	onMount(() => {
 		const tl = gsap.timeline();
@@ -28,7 +34,8 @@
 			toggleActions: 'restart none none none',
 			pin: true,
 			scrub: true,
-			animation: tl
+			animation: tl,
+			onLeave: leaveFunc
 			// markers: true
 		});
 	});
@@ -60,8 +67,8 @@
 		align-items: flex-start;
 		justify-content: space-between;
 		/* background-color: white; */
-		margin-top: 100px;
-		margin-bottom: 40px;
+		margin-top: 200px;
+		margin-bottom: 80px;
 		position: relative;
 		/* border-top: 1px solid black; */
 		/* border-bottom: 1px solid black; */

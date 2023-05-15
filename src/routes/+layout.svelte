@@ -6,3 +6,7 @@
 </script>
 
 <slot />
+
+<style>
+	@import url('https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@30,400&display=swap');
+</style>

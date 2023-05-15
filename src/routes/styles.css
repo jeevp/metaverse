@@ -90,10 +90,12 @@ h6 {
 	font-style: italic;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,30,400;1,30,400;0,72,400&display=swap');
+
 :root {
-	--ui-font: 'League Mono', 'supreme', 'barlow', 'iosevka', 'hk grotesk';
+	--ui-font: 'League Mono Narrow', 'supreme', 'barlow', 'iosevka', 'hk grotesk';
 	--sans-font: 'Standard', 'supreme', 'barlow', 'iosevka', 'hk grotesk';
-	--serif-font: 'NewsreaderVariable', 'Source Serif 4', 'gambetta', 'pt serif', 'noto serif';
+	--serif-font: 'Newsreader', 'Source Serif 4', 'gambetta', 'pt serif', 'noto serif';
 	--accent-font: 'standard', 'gambetta', 'pt serif', 'noto serif';
 	--dark: #121212;
 	--light: #f6f6f6;
@@ -109,6 +111,7 @@ h6 {
 	--pale-green: #f0f5ee;
 	--pale-blue: #eff2fb;
 	--pale-purple: #f1eaf1;
+	--max-page-width: 1800px;
 }
 
 /*
@@ -165,10 +168,12 @@ button {
 	display: grid;
 	grid-template-columns: repeat(12, minmax(0, 1fr));
 	grid-auto-rows: minmax(min-content, max-content);
+	margin: 0 auto;
 }
 
 .full-width {
 	grid-column: 1 / -1;
+	max-width: var(--max-page-width);
 }
 
 .start1 {
@@ -248,5 +253,17 @@ section.page {
 }
 
 .lil-gui {
-	display: none;
+	display: none !important;
+}
+
+@keyframes pulse {
+	from {
+		transform: scale(1);
+	}
+	50% {
+		transform: scale(1.06);
+	}
+	to {
+		transform: scale(1);
+	}
 }

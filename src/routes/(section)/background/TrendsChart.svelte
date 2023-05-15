@@ -31,6 +31,9 @@
 		type: 'line',
 		data: data,
 		options: {
+			animation: {
+				delay: 1000
+			},
 			spanGaps: true,
 			tension: 0.4,
 			plugins: {
@@ -84,14 +87,13 @@
 <style>
 	figure {
 		background-color: var(--light);
+		padding-top: 4em;
 	}
 	figcaption {
 		/* font-family: 'league mono narrow'; */
 		/* text-align: center; */
 		font-size: 0.95rem;
-		margin: 1em;
+		font-size: 0.9rem;
 		margin-top: 2em;
-		font-weight: 500;
-		opacity: 0.8;
 	}
 </style>

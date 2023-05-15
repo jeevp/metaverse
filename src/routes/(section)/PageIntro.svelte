@@ -13,11 +13,11 @@
 		position: fixed;
 		height: 40vh;
 		width: calc(100% - var(--gutter));
-		left: calc(var(--gutter) / 2);
 		display: flex;
 		padding: 0;
 		z-index: -1;
 		top: 1em;
+		margin: auto;
 	}
 	.page-intro .content {
 		margin: auto;
