@@ -1,20 +1,27 @@
-# create-svelte
+## Overview
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+[The Metaverse](https://metaverse.jeev.me) is a multimedia research essay that aims to explore whether the metaverse would fundamentally benefit human society. This website was developed as part of a semester-long Mentored Advanced Project for the Digital Studies concentration at Grinnell College.
 
-## Creating a project
+It is organized into three parts, with each focused on a broad theme/question:
 
-If you're seeing this, you've probably already done this step. Congrats!
+1. **Identity** — How would the metaverse shape notions of identity?
+2. **Reality** — How would the metaverse shift our perception of reality?
+3. **Capitalism** — What is the relationship between the metaverse and capitalism?
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+_Special thanks to Professor Sarah Purcell for her guidance and mentorship._
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+## Technologies
 
-## Developing
+- Svelte/SvelteKit web framework
+- ArchieML + Google Docs API (text formatting)
+- Mendeley + Citation.js (references)
+- GSAP (animations)
+- Chart.js (data visualizations)
+- vis.js (interactive timeline)
+- Three.js (3D graphics)
+- Blotter.js (typographic effects)
+
+## Running locally
 
 Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
 
@@ -24,15 +31,3 @@ npm run dev
 # or start the server and open the app in a new browser tab
 npm run dev -- --open
 ```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
