@@ -4,7 +4,6 @@
 	import copy from '../../../data/copy.json';
 	import Paragraph from '../Paragraph.svelte';
 	import PageIntro from '../PageIntro.svelte';
-	// import Cave from './Cave.svelte';
 	import Phases from './Phases.svelte';
 	import SvgFilters from '../../SVGFilters.svelte';
 	import BigTitle from '../BigTitle.svelte';
@@ -38,17 +37,6 @@
 
 	<Phases />
 
-	<!-- <div class="start3 end8 phases">
-		<ol>
-			{#each copy.imagePhases as phase}
-				<li>
-					<h4>{phase.name}</h4>
-					<span class="desc">{phase.description}</span>
-					<p class="example">{phase.example}</p>
-				</li>
-			{/each}
-		</ol>
-	</div> -->
 	<Paragraph words={copy.imagePhasesConclusion} classProp="start2 end7" />
 
 	<div class="start7 end12">
@@ -71,37 +59,5 @@
 		--text-color: var(--dark);
 		background-color: var(--bg-color);
 		color: var(--text-color);
-	}
-
-	.phases {
-		margin: 1.5em 0;
-	}
-
-	ol {
-		background-color: var(--bg-color);
-		color: var(--text-color);
-	}
-
-	li {
-		margin-bottom: 1.2em;
-		padding-left: 1em;
-	}
-
-	li::marker {
-		content: 'Phase ' counter(list-item) '';
-		font-size: 0.9rem;
-		font-weight: 600;
-	}
-
-	li .desc {
-		font-size: 1.1rem;
-		display: block;
-		margin-bottom: 0.3em;
-		font-style: italic;
-	}
-
-	li .example {
-		font-size: 1.1rem;
-		font-family: var(--serif-font);
 	}
 </style>

@@ -179,8 +179,4 @@
 		margin-bottom: 0.6em;
 		font-size: 0.9rem;
 	}
-
-	ul {
-		font-size: 1rem;
-	}
 </style>

@@ -27,10 +27,6 @@
 		font-size: 1.2rem;
 	}
 
-	blockquote.big {
-		font-size: 1.6em;
-	}
-
 	blockquote::before {
 		position: absolute;
 		margin-left: -0.5em;
