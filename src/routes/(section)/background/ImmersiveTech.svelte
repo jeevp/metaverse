@@ -45,8 +45,8 @@
 			{#key scrollIndex}
 				<div
 					class="fig-container"
-					in:fade={{ duration: 400, delay: 600 }}
-					out:fade={{ duration: 400, delay: 0 }}
+					in:fade|global={{ duration: 400, delay: 600 }}
+					out:fade|global={{ duration: 400, delay: 0 }}
 				>
 					<video autoplay muted loop>
 						<source src={`/videos/${videos[scrollIndex].source}`} type="video/mp4" />
@@ -55,8 +55,8 @@
 					</video>
 					<div
 						class="caption"
-						in:fly={{ y: 30, duration: 500, delay: 900 }}
-						out:fly={{ y: 30, duration: 500, delay: 0 }}
+						in:fly|global={{ y: 30, duration: 500, delay: 900 }}
+						out:fly|global={{ y: 30, duration: 500, delay: 0 }}
 					>
 						<strong>{videos[scrollIndex].name}</strong>
 						<span>{videos[scrollIndex].caption}</span>

@@ -12,7 +12,7 @@
 </script>
 
 {#key ready}
-	<div class="text" in:fade={{ duration: 300, delay: 1000 }}>
+	<div class="text" in:fade|global={{ duration: 300, delay: 1000 }}>
 		<div id="vid-container">
 			<video loop autoplay muted>
 				<source src={path} type="video/mp4" />

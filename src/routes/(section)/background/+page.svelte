@@ -23,7 +23,7 @@
 <section class="grid-wrapper page" style="padding-bottom: 0; margin-top: 20vh">
 	<SectionHeading hook={copy.introHook} byline={copy.introByline} />
 	{#if true}
-		<div class="start7 end12" in:fade={{ duration: 300, delay: 1200 }} style="padding-left: 2em">
+		<div class="start7 end12" in:fade|global={{ duration: 300, delay: 1200 }} style="padding-left: 2em">
 			<Figure source="./headset.png" alt="Illustration of a person wearing a headset" overflow />
 		</div>
 	{/if}
@@ -33,7 +33,7 @@
 
 		{#if showChart}
 			<div
-				in:fade={{ duration: 300, delay: 200 }}
+				in:fade|global={{ duration: 300, delay: 200 }}
 				class="start7 end12"
 				style="height: 0; overflow: visible; padding: 0 2em"
 			>
@@ -52,7 +52,7 @@
 			<div
 				class="start7 end12"
 				style="margin-top: 60px; padding: 2em 1em"
-				in:fade={{ duration: 300, delay: 1200 }}
+				in:fade|global={{ duration: 300, delay: 1200 }}
 			>
 				<Figure
 					source="./meta-screenshots.png"

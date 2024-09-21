@@ -82,7 +82,7 @@
 			</div>
 		</nav>
 
-		<div class="page-container" in:fade={{ duration: 300, delay: 400 }}>
+		<div class="page-container" in:fade|global={{ duration: 300, delay: 400 }}>
 			<slot />
 			<div class="grid-bg">
 				{#each { length: 12 } as _, i}

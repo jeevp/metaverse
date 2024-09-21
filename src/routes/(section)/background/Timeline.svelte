@@ -169,8 +169,8 @@
 		{#key currIndex}
 			<div
 				class="details-container"
-				in:blur={{ amount: 4, duration: 400, delay: 300 }}
-				out:blur={{ amount: 4, duration: 300 }}
+				in:blur|global={{ amount: 4, duration: 400, delay: 300 }}
+				out:blur|global={{ amount: 4, duration: 300 }}
 			>
 				{#if currentItem}
 					<div class="item-description">

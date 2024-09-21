@@ -35,7 +35,7 @@
 				<Splash />
 			</div>
 			{#if ready}
-				<div id="page-content" in:fade={{ duration: 300, delay: 600 }}>
+				<div id="page-content" in:fade|global={{ duration: 300, delay: 600 }}>
 					<div id="toc-container">
 						<header>
 							<div class="title">
