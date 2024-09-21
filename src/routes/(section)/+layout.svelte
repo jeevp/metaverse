@@ -6,7 +6,7 @@
 	import { onMount } from 'svelte';
 	import MediaQuery from '../MediaQuery.svelte';
 	const pages = ['background', 'identity', 'reality', 'capitalism', 'conclusion', 'references'];
-	import { Home, ArrowLeft, ArrowRight } from 'svelte-lucide';
+	import { Home, ArrowLeft, ArrowRight } from 'lucide-svelte';
 	import {
 		identityTransition,
 		realityTransition,

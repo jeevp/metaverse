@@ -4,7 +4,7 @@
 	import realRefs from '../../../data/reality.html?raw';
 	import capRefs from '../../../data/capitalism.html?raw';
 	import concRefs from '../../../data/conclusion.html?raw';
-	import { Library, Scroll } from 'svelte-lucide';
+	import { Library, Scroll } from 'lucide-svelte';
 </script>
 
 <section class="grid-wrapper">

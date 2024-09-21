@@ -1,6 +1,6 @@
 <script>
 	import { economyDemoSteps } from '../../../data/copy.json';
-	import { ArrowRight } from 'svelte-lucide';
+	import { ArrowRight } from 'lucide-svelte';
 
 	let currentStep = 0;
 

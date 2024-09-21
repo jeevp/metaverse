@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,30,400;1,30,400;0,72,400&display=swap');
+
 /*
   1. Use a more-intuitive box-sizing model.
 */
@@ -89,8 +91,6 @@ h6 {
 	font-weight: bold;
 	font-style: italic;
 }
-
-@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,30,400;1,30,400;0,72,400&display=swap');
 
 :root {
 	--ui-font: 'League Mono Narrow', 'supreme', 'barlow', 'iosevka', 'hk grotesk';

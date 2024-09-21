@@ -1,7 +1,7 @@
 <!-- <SvgFilters /> -->
 <script>
 	import copy from '../data/copy.json';
-	import { ArrowRight } from 'svelte-lucide';
+	import { ArrowRight } from 'lucide-svelte';
 	import Splash from './Splash.svelte';
 	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';

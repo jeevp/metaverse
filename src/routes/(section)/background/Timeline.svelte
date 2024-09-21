@@ -3,7 +3,7 @@
 	import { Timeline } from 'vis-timeline';
 	import { onMount } from 'svelte';
 	import { blur } from 'svelte/transition';
-	import { ArrowRight, ArrowLeft } from 'svelte-lucide';
+	import { ArrowRight, ArrowLeft } from 'lucide-svelte';
 
 	export let data;
 	let root;

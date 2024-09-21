@@ -35,8 +35,8 @@
 		"citation-js": "^0.6.7",
 		"gsap": "^3.11.4",
 		"lil-gui": "^0.18.1",
+		"lucide-svelte": "^0.445.0",
 		"moment": "^2.29.4",
-		"svelte-lucide": "^1.0.6",
 		"three": "^0.130.0",
 		"vis-data": "^7.1.4",
 		"vis-timeline": "^7.7.0"
